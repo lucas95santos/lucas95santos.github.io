@@ -1,14 +1,58 @@
 .dark-theme {
 	--background-color: #333333;
 	--text-color: #ffffff;
+	--nav-background-color: #222222;
 }
 
 .light-theme {
 	--background-color: #f0f0fa;
 	--text-color: #333333;
+	--nav-background-color: #ffffff;
 }
 
 body {
 	background-color: var(--background-color);
 	color: var(--text-color);
+}
+
+nav {
+	width: 100vw;
+	height: 70px;
+	/* background-color: var(--nav-background-color);
+	box-shadow: 0 2px 3px 0 #00000020; */
+}
+
+nav .content {
+	height: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+nav img {
+	max-width: 160px;
+}
+
+nav button {
+	background-color: transparent;
+	color: var(--text-color);
+	padding: 8px 16px;
+	border-radius: 4px;
+
+	font-size: 1rem;
+	font-weight: 500;
+	letter-spacing: 0.5px;
+
+	transition: all linear 0.2s;
+}
+
+nav button:hover {
+	background-color: var(--nav-background-color);
+}
+
+.container {
+	max-width: 95%;
+	height: 100%;
+	margin: 0 auto;
+	padding: 0 16px;
 }
