@@ -1,12 +1,13 @@
 const body = document.querySelector('body');
-const toogleThemeButton = document.getElementById('toogle-theme');
-const logo = document.getElementById('logo');
+const toogleDiv = document.querySelector('#toogle');
+const toogleSelector = document.querySelector("input[name=theme]");
 
 let currentTheme = localStorage.getItem('ls95-theme');
 
 function toogleTheme() {
 	const newTheme = body.classList.contains('light-theme') ? 'dark-theme' : 'light-theme';
-	logo.src = `../assets/images/${newTheme}-logo.png`;
+	toogleSelector.checked = body.classList.contains('light-theme');
+	toogleDiv.setAttribute('title', newTheme === 'light-theme' ? 'Mudar para o tema escuro' : 'Mudar para o tema claro');
 
 	body.classList.remove(currentTheme);
 	body.classList.add(newTheme);
@@ -25,6 +26,7 @@ function toogleTheme() {
 		localStorage.setItem('ls95-theme', currentTheme);
 	}
 
-	logo.src = `../assets/images/${currentTheme}-logo.png`;
-	toogleThemeButton.addEventListener('click', toogleTheme);
+	toogleDiv.setAttribute('title', currentTheme === 'light-theme' ? 'Mudar para o tema escuro' : 'Mudar para o tema claro');
+	toogleSelector.checked = body.classList.contains('dark-theme');
+	toogleSelector.addEventListener('change', toogleTheme);
 })();
