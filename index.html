@@ -8,40 +8,98 @@
 
 	<link rel="stylesheet" href="./styles/reset.css">
 	<link rel="stylesheet" href="./styles/index.css">
-	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+		rel="stylesheet">
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+		integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 </head>
 
 <body>
-	<nav>
-		<div class="container-fluid">
-			<div class="content">
-				<div class="brand">
-					<img src="./assets/images/me.jpg" alt="Logo">
-					<span>Lucas Santos</span>
-				</div>
-				<div id="toogle" title="">
-					<input id="switch" type="checkbox" name="theme">
-					<label for="switch">Toggle</label>
-				</div>
-			</div>
+	<aside class="sidebar">
+		<div class="toggle-menu"></div>
+		<div class="brand">
+			<img src="./assets/images/me.jpg" alt="Logo">
+			<span>Lucas Santos</span>
 		</div>
-	</nav>
+		<ul>
+			<li>
+				<a href="#sobre">
+					<span class="icon"><i class="fa fa-address-card" aria-hidden="true"></i></span>
+					<span class="title">Sobre mim</span>
+				</a>
+			</li>
+			<li>
+				<a href="#experiencias">
+					<span class="icon"><i class="fa fa-laptop" aria-hidden="true"></i></span>
+					<span class="title">Experiências</span>
+				</a>
+			</li>
+			<li>
+				<a href="#formacao">
+					<span class="icon"><i class="fa fa-graduation-cap" aria-hidden="true"></i></span>
+					<span class="title">Formação</span>
+				</a>
+			</li>
+			<li>
+				<a href="#habilidades">
+					<span class="icon"><i class="fa fa-bolt" aria-hidden="true"></i></span>
+					<span class="title">Habilidades</span>
+				</a>
+			</li>
+		</ul>
+	</aside>
 
-	<main>
+	<main class="content">
+		<div id="toogle-theme" title="">
+			<input id="switch" type="checkbox" name="theme">
+			<label for="switch">Toggle</label>
+		</div>
 		<div class="container">
-			<h1>Olá ✋️</h1>
-			<p>
-				Meu nome é Lucas Antonio dos Santos. Trabalho como Desenvolvedor Front End desde 2018.
-				Sou apaixonado pelo desenvolmento web e mobile e acho incrível como nós conseguimos, através da
-				programação, criar coisas do absoluto zero. <br /><br />
-				<strong>A imaginação 🧠️ é o nosso limite!!!</strong> <br /><br />
-				Atualmente estou trabalhando como Desenvolvedor Front End numa empresa chamada <strong>Omni Digitalis</strong>.
-				Participo da criação de aplicações Web e Mobile utilizando React.js e React Native
-				<img src="./assets/images/react.png" alt="">.
-			</p>
+			<section id="sobre">
+				<h1>Olá ✋️</h1>
+				<p>
+					Meu nome é Lucas Antonio dos Santos. Trabalho como Desenvolvedor Front End desde 2018.
+					Sou apaixonado pelo desenvolmento web e mobile e acho incrível como nós conseguimos, através da
+					programação, criar coisas do absoluto zero. <br /><br />
+					<strong>A imaginação 🧠️ é o nosso limite!!!</strong> <br /><br />
+					Atualmente estou trabalhando como Desenvolvedor Front End numa empresa chamada <strong>Omni
+						Digitalis</strong>.
+					Participo da criação de aplicações Web e Mobile utilizando React.js e React Native
+					<img src="./assets/images/react.png" alt="">.
+				</p>
+			</section>
 
-			<div class="skills">
-				<h2>Meus Conhecimentos</h2>
+			<section id="experiencias">
+				<h2>Um pouco da minha experiência profissional</h2>
+
+				<h3>Omni Digitalis Solutio</h3>
+				<small>desde 2018</small>
+
+				<p class="desc">
+					Atuo no desenvolvimento de interfaces e regras de negócio de aplicações web utilizando <strong>ReactJS</strong>
+					e de aplicações mobile utilizando <strong>React Native</strong>.
+				</p>
+			</section>
+
+			<section id="formacao">
+				<h2>Minha Formação</h2>
+
+				<div class="formacao__item">
+					<h3>Universidade Federal de Mato Grosso do Sul</h3>
+					<h4>Sistemas de Informação</h4>
+					<small>2016 - 2021</small>
+				</div>
+
+				<div class="formacao__item">
+					<h3>Etec - Centro Paula Souza <i class="fa fa-check"></i></h3>
+					<h4>Técnico em Informática</h4>
+					<small>2015 - 2016</small>
+				</div>
+			</section>
+
+			<section id="habilidades">
+				<h2>O que eu sei</h2>
 
 				<ul>
 					<li><img src="./assets/images/html5.svg" alt="HTML icon">HTML 5</li>
@@ -53,11 +111,11 @@
 					<li><img src="./assets/images/java.svg" alt="Java icon">Java</li>
 					<li><img src="./assets/images/php.svg" alt="PHP icon">PHP</li>
 				</ul>
-			</div>
+			</section>
 		</div>
 	</main>
 
-	<footer>
+	<footer class="footer-content">
 		<div class="info">
 			<p>Desenvolvido por Lucas Santos</p>
 		</div>

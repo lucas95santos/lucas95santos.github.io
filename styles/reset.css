@@ -4,6 +4,7 @@ html {
 	box-sizing: border-box;
 	font-size: 16px;
 	font-family: 'Montserrat', -apple-system, Ubuntu, sans-serif;
+	scroll-behavior: smooth;
 }
 
 *,
@@ -30,6 +31,10 @@ ul {
 ol,
 ul {
 	list-style: none;
+}
+
+strong {
+	font-weight: 600;
 }
 
 img {
