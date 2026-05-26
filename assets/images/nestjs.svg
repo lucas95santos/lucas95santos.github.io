@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="ng" gradientUnits="userSpaceOnUse" x1="50" y1="3" x2="50" y2="98">
+      <stop offset="0%" stop-color="#E82950"/>
+      <stop offset="100%" stop-color="#E0234E"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Main cat silhouette (clockwise from nose) -->
+  <path fill="url(#ng)" d="
+    M 3 45
+    C 2 37, 4 28, 12 22
+    C 12 18, 10 13, 14 12
+    L 18 15 L 15 10 L 20 12
+    C 25 8, 33 6, 43 6
+    C 45 2, 50 1, 53 6
+    C 60 4, 72 8, 83 16
+    C 90 21, 96 30, 97 38
+    C 98 43, 99 49, 100 53
+    C 99 57, 97 61, 95 61
+    C 97 66, 98 71, 96 74
+    C 94 78, 91 77, 90 73
+    C 92 78, 92 85, 89 88
+    C 86 92, 83 90, 82 85
+    C 78 90, 72 94, 65 96
+    C 65 99, 62 100, 58 99
+    C 56 97, 57 92, 60 89
+    C 54 91, 47 92, 41 90
+    C 41 94, 39 99, 35 98
+    C 32 98, 30 95, 32 90
+    C 24 86, 18 79, 15 71
+    C 10 69, 5 63, 5 56
+    C 4 51, 3 48, 3 45 Z
+  "/>
+
+  <!-- Eye crescent -->
+  <path fill="white" d="M 14 35 C 19 26, 30 29, 27 39 C 24 45, 12 42, 14 35Z"/>
+
+  <!-- Mouth with teeth -->
+  <path fill="white" d="M 3 53 C 8 46, 17 50, 15 59 L 11 55 L 9 59 L 7 56 L 3 53Z"/>
+
+  <!-- Inner tail/body curve (large white cutout) -->
+  <path fill="white" d="M 32 62 C 38 53, 53 55, 58 67 C 62 75, 58 87, 49 90 C 39 87, 28 78, 32 62Z"/>
+
+  <!-- Upper-right mane definition -->
+  <path fill="white" d="M 72 22 C 80 28, 85 38, 80 49 C 76 43, 73 34, 72 22Z"/>
+
+  <!-- Mid-right flame gap -->
+  <path fill="white" d="M 82 56 C 89 61, 90 70, 86 76 C 83 70, 82 62, 82 56Z"/>
+
+  <!-- Lower-right flame gap -->
+  <path fill="white" d="M 77 77 C 81 82, 81 89, 77 93 C 74 87, 74 80, 77 77Z"/>
+</svg>

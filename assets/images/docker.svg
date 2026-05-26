@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+
+  <!-- Whale body -->
+  <path fill="#0db7ed" d="
+    M 10 64
+    C 7 52 11 37 22 28
+    C 33 19 68 19 83 27
+    C 93 34 97 46 94 58
+    C 92 67 83 73 68 76
+    C 48 80 18 77 10 64Z
+  "/>
+
+  <!-- Underbelly (lighter) -->
+  <path fill="#BAE0F5" d="
+    M 14 72 C 28 79 55 80 72 74 C 55 82 25 82 14 72Z
+  "/>
+
+  <!-- Tail fin -->
+  <path fill="#0db7ed" d="M 87 55 C 97 48 100 52 99 62 C 98 69 91 70 87 64Z"/>
+
+  <!-- Tail fin lighter notch -->
+  <path fill="#BAE0F5" d="M 97 52 C 100 52 100 60 97 62Z"/>
+
+  <!-- Eye -->
+  <circle cx="22" cy="48" r="6.5" fill="white"/>
+  <circle cx="21" cy="47" r="3.5" fill="#1B4E82"/>
+  <circle cx="19.5" cy="45.5" r="1.2" fill="white"/>
+
+  <!-- Containers — 3 cols × 3 rows sitting on whale's back -->
+  <rect x="30" y="7"  width="11" height="8" rx="1.5" fill="#1abed4" stroke="#1B4E82" stroke-width="1.4"/>
+  <rect x="43" y="7"  width="11" height="8" rx="1.5" fill="#1abed4" stroke="#1B4E82" stroke-width="1.4"/>
+  <rect x="56" y="7"  width="11" height="8" rx="1.5" fill="#1abed4" stroke="#1B4E82" stroke-width="1.4"/>
+  <rect x="30" y="17" width="11" height="8" rx="1.5" fill="#1abed4" stroke="#1B4E82" stroke-width="1.4"/>
+  <rect x="43" y="17" width="11" height="8" rx="1.5" fill="#1abed4" stroke="#1B4E82" stroke-width="1.4"/>
+  <rect x="56" y="17" width="11" height="8" rx="1.5" fill="#1abed4" stroke="#1B4E82" stroke-width="1.4"/>
+  <rect x="30" y="27" width="11" height="8" rx="1.5" fill="#1abed4" stroke="#1B4E82" stroke-width="1.4"/>
+  <rect x="43" y="27" width="11" height="8" rx="1.5" fill="#1abed4" stroke="#1B4E82" stroke-width="1.4"/>
+  <rect x="56" y="27" width="11" height="8" rx="1.5" fill="#1abed4" stroke="#1B4E82" stroke-width="1.4"/>
+
+  <!-- Blow spout -->
+  <path fill="none" stroke="#0db7ed" stroke-width="3" stroke-linecap="round" d="M 68 27 C 69 19 72 14 71 7"/>
+</svg>

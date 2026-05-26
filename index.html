@@ -1,142 +1,1416 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="pt-BR">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Lucas Santos</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lucas Santos — Senior Backend Engineer</title>
+<meta name="description" content="Senior Backend Engineer especializado em Node.js, TypeScript e AWS. 8+ anos de experiência em sistemas distribuídos de alta disponibilidade.">
+<meta property="og:title" content="Lucas Santos — Senior Backend Engineer">
+<meta property="og:description" content="Senior Backend Engineer especializado em Node.js, TypeScript e AWS.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=JetBrains+Mono:wght@300;400;500&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script>!function(){var t=localStorage.getItem('ls-theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);}();</script>
+<style>
+/* ── TOKENS ──────────────────────────────────────── */
+:root {
+  --bg:    #070D1A;
+  --bg2:   #0C1526;
+  --surf:  #101F35;
+  --surf2: #162840;
+  --bdr:   #1C3050;
+  --bdr2:  #122038;
+  --acc:    #00E8C0;
+  --acc-r:  0,232,192;
+  --acc2:   #FFB547;
+  --acc2-r: 255,181,71;
+  --tx:  #D8E8F5;
+  --tx2: #7A9DB8;
+  --tx3: #3D5E78;
+  --nav-bg: rgba(7,13,26,0.88);
+  --shadow: 0 4px 32px rgba(0,0,0,0.4);
 
-	<link rel="stylesheet" href="./styles/reset.css">
-	<link rel="stylesheet" href="./styles/index.css">
-	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
-		rel="stylesheet">
+  --fD: 'Barlow Condensed', sans-serif;
+  --fB: 'Plus Jakarta Sans', sans-serif;
+  --fM: 'JetBrains Mono', monospace;
 
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-		integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  --mw:  1140px;
+  --px:  clamp(1.25rem, 5vw, 3.5rem);
+  --nav: 68px;
+  --spy: clamp(80px, 11vw, 130px);
+  --r:   10px;
+  --r2:  20px;
+  --t:   .18s ease;
+  --ts:  .35s ease;
+}
+[data-theme="light"] {
+  --bg:    #F2F6FC;
+  --bg2:   #E6EDF7;
+  --surf:  #FFFFFF;
+  --surf2: #EBF1FA;
+  --bdr:   #C5D3E5;
+  --bdr2:  #D5E0EE;
+  --acc:    #006E5C;
+  --acc-r:  0,110,92;
+  --acc2:   #B85800;
+  --acc2-r: 184,88,0;
+  --tx:  #091726;
+  --tx2: #3A5C78;
+  --tx3: #8098B0;
+  --nav-bg: rgba(242,246,252,0.88);
+  --shadow: 0 4px 24px rgba(0,0,0,0.09);
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --bg:#F2F6FC;--bg2:#E6EDF7;--surf:#FFFFFF;--surf2:#EBF1FA;
+    --bdr:#C5D3E5;--bdr2:#D5E0EE;
+    --acc:#006E5C;--acc-r:0,110,92;
+    --acc2:#B85800;--acc2-r:184,88,0;
+    --tx:#091726;--tx2:#3A5C78;--tx3:#8098B0;
+    --nav-bg:rgba(242,246,252,0.88);
+    --shadow:0 4px 24px rgba(0,0,0,0.09);
+  }
+}
+
+/* ── RESET ───────────────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:var(--fB);background:var(--bg);color:var(--tx);line-height:1.65;overflow-x:hidden;transition:background var(--ts),color var(--ts)}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
+button{cursor:pointer;border:none;background:none;font-family:inherit;color:inherit}
+ul{list-style:none}
+::selection{background:rgba(var(--acc-r),.22);color:var(--tx)}
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--bdr);border-radius:3px}
+::-webkit-scrollbar-thumb:hover{background:var(--acc)}
+
+/* ── NAV ─────────────────────────────────────────── */
+.nav{
+  position:fixed;top:0;left:0;right:0;
+  height:var(--nav);z-index:200;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 var(--px);
+  border-bottom:1px solid transparent;
+  transition:background var(--t),border-color var(--t),backdrop-filter var(--t);
+}
+.nav.scrolled{
+  background:var(--nav-bg);
+  border-bottom-color:var(--bdr2);
+  backdrop-filter:blur(14px);
+}
+.nav-logo{
+  font-family:var(--fM);font-size:.95rem;font-weight:500;
+  color:var(--tx);letter-spacing:-.01em;
+  display:flex;align-items:center;gap:2px;
+  transition:color var(--t);
+}
+.nav-logo:hover{color:var(--acc)}
+.nav-logo .bracket{color:var(--acc)}
+.nav-links{
+  display:flex;align-items:center;gap:2rem;
+}
+.nav-links a{
+  font-family:var(--fM);font-size:.78rem;font-weight:400;
+  color:var(--tx2);letter-spacing:.04em;text-transform:uppercase;
+  transition:color var(--t);position:relative;padding-bottom:2px;
+}
+.nav-links a::after{
+  content:'';position:absolute;bottom:0;left:0;width:0;height:1px;
+  background:var(--acc);transition:width var(--t);
+}
+.nav-links a:hover,
+.nav-links a.active{color:var(--tx)}
+.nav-links a:hover::after,
+.nav-links a.active::after{width:100%}
+.nav-controls{display:flex;align-items:center;gap:.75rem}
+.lang-sw{display:flex;align-items:center;gap:2px;background:var(--surf);border:1px solid var(--bdr);border-radius:var(--r);padding:2px}
+.lang-btn{
+  font-family:var(--fM);font-size:.72rem;font-weight:500;
+  padding:.25rem .5rem;border-radius:6px;color:var(--tx2);
+  transition:background var(--t),color var(--t);letter-spacing:.04em;
+}
+.lang-btn.active,.lang-btn:hover{background:var(--acc);color:var(--bg)}
+.theme-btn{
+  width:36px;height:36px;border-radius:var(--r);
+  border:1px solid var(--bdr);background:var(--surf);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--tx2);transition:all var(--t);
+}
+.theme-btn:hover{border-color:var(--acc);color:var(--acc)}
+.hamburger{
+  display:none;flex-direction:column;gap:5px;
+  width:36px;height:36px;border-radius:var(--r);
+  border:1px solid var(--bdr);background:var(--surf);
+  align-items:center;justify-content:center;
+}
+.hamburger span{display:block;width:16px;height:1.5px;background:var(--tx2);transition:all var(--t);border-radius:2px}
+.hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+
+/* Mobile overlay */
+.mob-overlay{
+  display:none;position:fixed;inset:0;z-index:150;
+  background:var(--bg);flex-direction:column;
+  align-items:center;justify-content:center;gap:2rem;
+  padding:var(--nav) var(--px) 2rem;
+}
+.mob-overlay.open{display:flex}
+.mob-overlay a{
+  font-family:var(--fD);font-size:1.8rem;font-weight:700;color:var(--tx2);
+  transition:color var(--t);
+}
+.mob-overlay a:hover{color:var(--acc)}
+.mob-overlay .mob-controls{display:flex;align-items:center;gap:1rem;margin-top:1rem}
+
+/* ── HERO ────────────────────────────────────────── */
+.hero{
+  min-height:100vh;display:flex;flex-direction:column;
+  justify-content:center;padding-top:var(--nav);
+  padding-left:var(--px);padding-right:var(--px);
+  position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background-image:radial-gradient(circle,rgba(var(--acc-r),.07) 1px,transparent 1px);
+  background-size:38px 38px;
+  pointer-events:none;
+}
+.hero::after{
+  content:'';position:absolute;
+  top:-20%;left:-10%;width:60%;height:80%;
+  background:radial-gradient(ellipse,rgba(var(--acc-r),.06) 0%,transparent 65%);
+  pointer-events:none;animation:pulse 7s ease-in-out infinite;
+}
+@keyframes pulse{0%,100%{opacity:.6;transform:scale(1)}50%{opacity:1;transform:scale(1.05)}}
+
+.hero-inner{
+  max-width:var(--mw);margin:0 auto;width:100%;
+  display:grid;grid-template-columns:1fr auto;gap:3rem 5rem;
+  align-items:center;padding:4rem 0 2rem;
+}
+.hero-label{display:flex;align-items:center;gap:.75rem;margin-bottom:1.5rem}
+.hero-prompt{
+  font-family:var(--fM);font-size:.82rem;color:var(--tx2);
+  background:var(--surf);border:1px solid var(--bdr);
+  padding:.3rem .75rem;border-radius:var(--r);
+}
+.hero-available{
+  font-family:var(--fM);font-size:.72rem;color:var(--acc);
+  display:flex;align-items:center;gap:.4rem;
+}
+.hero-available::before{
+  content:'';width:7px;height:7px;border-radius:50%;
+  background:var(--acc);display:block;
+  animation:blink 2s ease-in-out infinite;
+}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+
+.hero-name{
+  font-family:var(--fD);font-size:clamp(3.2rem,7vw,6rem);
+  font-weight:800;line-height:.95;letter-spacing:-.03em;
+  color:var(--tx);margin-bottom:1.25rem;
+}
+.hero-name span{color:var(--acc)}
+
+.hero-role{
+  font-family:var(--fM);font-size:clamp(1rem,2.2vw,1.4rem);
+  color:var(--tx2);margin-bottom:1.5rem;
+  min-height:2em;display:flex;align-items:center;gap:.35rem;
+}
+.hero-role .cursor{
+  display:inline-block;width:2px;height:1.1em;
+  background:var(--acc);animation:blink 1s step-end infinite;
+  vertical-align:middle;
+}
+
+.hero-tagline{
+  font-size:1rem;color:var(--tx2);max-width:520px;
+  margin-bottom:2rem;line-height:1.7;
+}
+.hero-actions{display:flex;gap:.875rem;flex-wrap:wrap}
+.btn{
+  display:inline-flex;align-items:center;gap:.5rem;
+  padding:.7rem 1.5rem;border-radius:var(--r);
+  font-family:var(--fM);font-size:.82rem;font-weight:500;
+  letter-spacing:.03em;transition:all var(--t);
+}
+.btn-primary{
+  background:var(--acc);color:var(--bg);
+}
+.btn-primary:hover{filter:brightness(1.1);transform:translateY(-1px)}
+.btn-outline{
+  border:1px solid var(--bdr);color:var(--tx2);background:var(--surf);
+}
+.btn-outline:hover{border-color:var(--acc);color:var(--acc);transform:translateY(-1px)}
+
+/* Photo */
+.hero-photo{position:relative}
+.photo-wrap{
+  width:clamp(180px,20vw,260px);
+  height:clamp(180px,20vw,260px);
+  border-radius:var(--r2);
+  border:1px solid var(--bdr);
+  overflow:hidden;position:relative;
+  box-shadow:0 0 0 1px rgba(var(--acc-r),.15), var(--shadow);
+  transition:box-shadow var(--ts);
+}
+.photo-wrap::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(var(--acc-r),.08) 0%,transparent 60%);
+  z-index:1;pointer-events:none;
+}
+.photo-wrap img{width:100%;height:100%;object-fit:cover;object-position:top center}
+.photo-wrap:hover{box-shadow:0 0 0 2px var(--acc),var(--shadow)}
+
+/* Stats bar */
+.hero-stats{
+  max-width:var(--mw);margin:2rem auto 0;width:100%;
+  display:grid;grid-template-columns:repeat(3,1fr);
+  border:1px solid var(--bdr);border-radius:var(--r2);
+  background:var(--surf);overflow:hidden;
+}
+.stat{
+  padding:1.5rem 2rem;text-align:center;
+  border-right:1px solid var(--bdr);
+  position:relative;
+}
+.stat:last-child{border-right:none}
+.stat::after{
+  content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);
+  width:0;height:2px;background:var(--acc);
+  transition:width var(--ts);
+}
+.stat:hover::after{width:60%}
+.stat-val{
+  font-family:var(--fD);font-size:2.4rem;font-weight:800;
+  color:var(--acc);line-height:1;display:block;
+}
+.stat-lbl{
+  font-family:var(--fM);font-size:.72rem;color:var(--tx2);
+  letter-spacing:.04em;text-transform:uppercase;margin-top:.35rem;display:block;
+}
+
+/* ── SECTION SHARED ──────────────────────────────── */
+.section{
+  padding:var(--spy) var(--px);
+  max-width:calc(var(--mw) + 2*var(--px));margin:0 auto;
+}
+.section-inner{max-width:var(--mw);margin:0 auto}
+.section-hd{margin-bottom:3.5rem}
+.section-tag{
+  font-family:var(--fM);font-size:.72rem;
+  color:var(--acc);letter-spacing:.1em;text-transform:uppercase;
+  display:block;margin-bottom:.75rem;
+}
+.section-hd h2{
+  font-family:var(--fD);font-size:clamp(1.8rem,4vw,2.8rem);
+  font-weight:800;line-height:1.05;letter-spacing:-.025em;color:var(--tx);
+}
+.section-hd p{
+  margin-top:.75rem;color:var(--tx2);max-width:520px;font-size:.95rem;
+}
+.section-alt{background:var(--bg2)}
+
+/* ── ABOUT ───────────────────────────────────────── */
+.about-grid{
+  display:grid;grid-template-columns:1.1fr 1fr;gap:4rem;align-items:start;
+}
+.about-text{font-size:1rem;color:var(--tx2);line-height:1.8}
+.about-text p+p{margin-top:1rem}
+.about-highlights{
+  display:grid;grid-template-columns:1fr 1fr;gap:1rem;
+}
+.highlight-card{
+  background:var(--surf);border:1px solid var(--bdr);
+  border-radius:var(--r2);padding:1.25rem 1.5rem;
+  transition:border-color var(--t),transform var(--t);
+}
+.highlight-card:hover{border-color:var(--acc);transform:translateY(-2px)}
+.highlight-icon{font-size:1.4rem;margin-bottom:.5rem}
+.highlight-label{
+  font-family:var(--fD);font-size:.9rem;font-weight:700;color:var(--tx);
+}
+.highlight-desc{font-size:.8rem;color:var(--tx2);margin-top:.2rem}
+
+/* ── EXPERIENCE ──────────────────────────────────── */
+.timeline{position:relative;padding-left:2rem}
+.timeline::before{
+  content:'';position:absolute;left:0;top:8px;bottom:0;
+  width:1px;background:linear-gradient(to bottom,var(--acc),transparent);
+}
+.tl-item{
+  position:relative;padding:0 0 3.5rem 2.5rem;
+}
+.tl-item::before{
+  content:'';position:absolute;left:-5px;top:8px;
+  width:11px;height:11px;border-radius:50%;
+  background:var(--bg);border:2px solid var(--acc);
+  transition:background var(--t),box-shadow var(--t);
+}
+.tl-item:hover::before{
+  background:var(--acc);
+  box-shadow:0 0 0 4px rgba(var(--acc-r),.15);
+}
+.tl-item:last-child{padding-bottom:0}
+.tl-head{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:.5rem}
+.tl-company{
+  font-family:var(--fD);font-size:1.25rem;font-weight:800;
+  color:var(--tx);letter-spacing:-.01em;
+}
+.tl-period{
+  font-family:var(--fM);font-size:.75rem;color:var(--tx2);
+  background:var(--surf);border:1px solid var(--bdr);
+  padding:.25rem .7rem;border-radius:var(--r);white-space:nowrap;
+  flex-shrink:0;
+}
+.tl-role{
+  font-size:.9rem;color:var(--acc2);font-weight:600;
+  margin-bottom:.25rem;
+}
+.tl-location{
+  font-family:var(--fM);font-size:.75rem;color:var(--tx3);
+  margin-bottom:1rem;
+}
+.tl-bullets{list-style:none;margin-bottom:1rem}
+.tl-bullets li{
+  font-size:.88rem;color:var(--tx2);padding:.3rem 0 .3rem 1.2rem;
+  position:relative;line-height:1.6;
+}
+.tl-bullets li::before{
+  content:'›';position:absolute;left:0;
+  color:var(--acc);font-size:1rem;line-height:1.5;
+}
+.tl-tags{display:flex;flex-wrap:wrap;gap:.4rem}
+.tl-tag{
+  font-family:var(--fM);font-size:.68rem;
+  padding:.22rem .6rem;border-radius:6px;
+  background:rgba(var(--acc-r),.08);
+  border:1px solid rgba(var(--acc-r),.2);
+  color:var(--acc);letter-spacing:.02em;
+  transition:background var(--t);
+}
+.tl-tag:hover{background:rgba(var(--acc-r),.18)}
+
+/* ── SKILLS ──────────────────────────────────────── */
+.skills-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+  gap:1.25rem;
+}
+.skill-group{
+  background:var(--surf);border:1px solid var(--bdr);
+  border-radius:var(--r2);padding:1.5rem;
+  transition:border-color var(--t),transform var(--t);
+}
+.skill-group:hover{border-color:rgba(var(--acc-r),.4)}
+.skill-group-label{
+  font-family:var(--fM);font-size:.72rem;font-weight:500;
+  color:var(--tx2);letter-spacing:.08em;text-transform:uppercase;
+  margin-bottom:1rem;padding-bottom:.75rem;
+  border-bottom:1px solid var(--bdr);
+}
+.skill-tags{display:flex;flex-wrap:wrap;gap:.4rem}
+.skill-tag{
+  font-family:var(--fM);font-size:.74rem;
+  padding:.3rem .7rem;border-radius:6px;
+  background:var(--surf2);border:1px solid var(--bdr);
+  color:var(--tx2);transition:all var(--t);
+  display:inline-flex;align-items:center;gap:.35rem;
+}
+.skill-tag img{width:14px;height:14px;flex-shrink:0;object-fit:contain}
+.skill-tag:hover{
+  border-color:var(--acc);color:var(--acc);
+  background:rgba(var(--acc-r),.06);
+}
+
+/* ── STUDIES ─────────────────────────────────────── */
+.studies-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
+  gap:1.25rem;
+}
+.study-card{
+  background:var(--surf);border:1px solid var(--bdr);
+  border-radius:var(--r2);padding:1.75rem 1.5rem;
+  transition:all var(--t);position:relative;overflow:hidden;
+}
+.study-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--acc2),transparent);
+  opacity:0;transition:opacity var(--t);
+}
+.study-card:hover{border-color:rgba(var(--acc2-r),.4);transform:translateY(-3px)}
+.study-card:hover::before{opacity:1}
+.study-icon{
+  width:52px;height:52px;border-radius:var(--r);
+  background:var(--surf2);border:1px solid var(--bdr);
+  display:inline-flex;align-items:center;justify-content:center;
+  margin-bottom:1rem;overflow:hidden;
+}
+.study-icon img{width:36px;height:36px;object-fit:contain}
+.study-name{
+  font-family:var(--fD);font-size:1.1rem;font-weight:700;
+  color:var(--tx);margin-bottom:.4rem;
+}
+.study-desc{font-size:.8rem;color:var(--tx2);line-height:1.5;margin-bottom:1rem}
+.study-badge{
+  font-family:var(--fM);font-size:.65rem;font-weight:500;
+  padding:.22rem .6rem;border-radius:6px;
+  background:rgba(var(--acc2-r),.1);
+  border:1px solid rgba(var(--acc2-r),.25);
+  color:var(--acc2);letter-spacing:.04em;text-transform:uppercase;
+  display:inline-flex;align-items:center;gap:.35rem;
+}
+.study-badge::before{
+  content:'';width:5px;height:5px;border-radius:50%;
+  background:var(--acc2);display:block;
+  animation:blink 2s ease-in-out infinite;
+}
+
+/* ── EDUCATION ───────────────────────────────────── */
+.edu-list{display:flex;flex-direction:column;gap:1.25rem}
+.edu-item{
+  display:grid;grid-template-columns:auto 1fr;gap:1.5rem 2rem;
+  align-items:start;
+  background:var(--surf);border:1px solid var(--bdr);
+  border-radius:var(--r2);padding:1.75rem 2rem;
+  transition:border-color var(--t);
+}
+.edu-item:hover{border-color:rgba(var(--acc-r),.35)}
+.edu-year{
+  font-family:var(--fM);font-size:.8rem;font-weight:500;
+  color:var(--acc);padding:.3rem .7rem;
+  background:rgba(var(--acc-r),.08);
+  border:1px solid rgba(var(--acc-r),.18);
+  border-radius:var(--r);white-space:nowrap;text-align:center;
+}
+.edu-type{
+  font-family:var(--fM);font-size:.68rem;color:var(--tx2);
+  letter-spacing:.06em;text-transform:uppercase;margin-bottom:.35rem;
+}
+.edu-degree{
+  font-family:var(--fD);font-size:1.05rem;font-weight:700;
+  color:var(--tx);margin-bottom:.3rem;
+}
+.edu-inst{font-size:.88rem;color:var(--tx2)}
+
+/* ── CONTACT ─────────────────────────────────────── */
+.contact-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:1.25rem;
+}
+.contact-item{
+  display:flex;align-items:center;gap:1rem;
+  background:var(--surf);border:1px solid var(--bdr);
+  border-radius:var(--r2);padding:1.5rem 1.75rem;
+  transition:all var(--t);
+}
+.contact-item:hover{border-color:var(--acc);transform:translateY(-2px)}
+.contact-icon{
+  width:44px;height:44px;border-radius:var(--r);
+  background:rgba(var(--acc-r),.08);border:1px solid rgba(var(--acc-r),.18);
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;color:var(--acc);
+}
+.contact-lbl{
+  font-family:var(--fM);font-size:.68rem;color:var(--tx2);
+  letter-spacing:.06em;text-transform:uppercase;margin-bottom:.2rem;
+}
+.contact-val{font-size:.9rem;color:var(--tx);font-weight:500;word-break:break-all}
+
+/* ── FOOTER ──────────────────────────────────────── */
+footer{
+  padding:2rem var(--px);
+  border-top:1px solid var(--bdr2);
+  display:flex;align-items:center;justify-content:space-between;
+  gap:1rem;flex-wrap:wrap;
+}
+.footer-text{
+  font-family:var(--fM);font-size:.75rem;color:var(--tx3);
+}
+.footer-links{display:flex;gap:.75rem}
+.footer-links a{
+  font-family:var(--fM);font-size:.75rem;color:var(--tx3);
+  transition:color var(--t);
+}
+.footer-links a:hover{color:var(--acc)}
+
+/* ── REVEAL ANIMATIONS ───────────────────────────── */
+.reveal{
+  opacity:0;transform:translateY(22px);
+  transition:opacity .55s ease,transform .55s ease;
+}
+.reveal.show{opacity:1;transform:none}
+.reveal-delay-1{transition-delay:.1s}
+.reveal-delay-2{transition-delay:.2s}
+.reveal-delay-3{transition-delay:.3s}
+
+/* ── RESPONSIVE ──────────────────────────────────── */
+@media(max-width:900px){
+  .hero-inner{grid-template-columns:1fr;text-align:center}
+  .hero-label{justify-content:center}
+  .hero-tagline{margin-left:auto;margin-right:auto}
+  .hero-actions{justify-content:center}
+  .hero-photo{justify-self:center}
+  .about-grid{grid-template-columns:1fr}
+  .about-highlights{grid-template-columns:1fr 1fr}
+  .contact-grid{grid-template-columns:1fr}
+}
+@media(max-width:768px){
+  .nav-links,.nav-controls{display:none}
+  .hamburger{display:flex}
+  .hero-stats{grid-template-columns:repeat(3,1fr)}
+  .about-highlights{grid-template-columns:1fr}
+  .skills-grid{grid-template-columns:1fr}
+  .studies-grid{grid-template-columns:1fr 1fr}
+  .edu-item{grid-template-columns:1fr}
+}
+@media(max-width:480px){
+  .hero-stats{grid-template-columns:1fr}
+  .stat{border-right:none;border-bottom:1px solid var(--bdr)}
+  .stat:last-child{border-bottom:none}
+  .studies-grid{grid-template-columns:1fr}
+  .tl-head{flex-direction:column;align-items:flex-start}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition-duration:.01ms!important}
+  html{scroll-behavior:auto}
+}
+</style>
 </head>
-
 <body>
-	<aside class="sidebar">
-		<div class="toggle-menu"></div>
-		<div class="brand">
-			<img src="./assets/images/me.jpg" alt="Logo">
-			<span>Lucas Santos</span>
-		</div>
-		<ul>
-			<li>
-				<a href="#sobre">
-					<span class="icon"><i class="fa fa-address-card" aria-hidden="true"></i></span>
-					<span class="title">Sobre mim</span>
-				</a>
-			</li>
-			<li>
-				<a href="#experiencias">
-					<span class="icon"><i class="fa fa-laptop" aria-hidden="true"></i></span>
-					<span class="title">Experiências</span>
-				</a>
-			</li>
-			<li>
-				<a href="#formacao">
-					<span class="icon"><i class="fa fa-graduation-cap" aria-hidden="true"></i></span>
-					<span class="title">Formação</span>
-				</a>
-			</li>
-			<li>
-				<a href="#habilidades">
-					<span class="icon"><i class="fa fa-bolt" aria-hidden="true"></i></span>
-					<span class="title">Habilidades</span>
-				</a>
-			</li>
-		</ul>
-	</aside>
 
-	<main class="content">
-		<div id="toogle-theme" title="">
-			<input id="switch" type="checkbox" name="theme">
-			<label for="switch">Toggle</label>
-		</div>
-		<div class="container">
-			<section id="sobre">
-				<h1>Olá ✋️</h1>
-				<p>
-					Meu nome é Lucas Antonio dos Santos. Sou um desenvolvedor Front End, com mais de 2 anos de experiência
-					em desenvolvimento web e mobile. Sou apaixonado pelo desenvolmento web e acho incrível como
-					nós conseguimos, através da programação, criar coisas do absoluto zero. <br /><br />
-					<strong>A imaginação 🧠️ é o nosso limite!!!</strong> <br /><br />
-					Trabalhei em algumas aplicações da área financeira, área médica e área de entretenimento.
-					Possuo sólidos conhecimentos em HTML5 <img src="./assets/images/html5.svg" alt="HTML icon">,
-					CSS3 <img src="./assets/images/css3.svg" alt="CSS icon">, Javascript <img src="./assets/images/javascript.svg" alt="Javascript icon">,
-					React <img src="./assets/images/react.png" alt="React"> e React Native <img src="./assets/images/react.png" alt="React Native">,
-					e também em frameworks
-					de estilização como Bootstrap <img src="./assets/images/bootstrap.svg" alt="React"> e Material UI <img src="./assets/images/material-ui.svg" alt="React">.
-					Atualmente estou focado em aperfeiçoar meus conhecimentos em testes automatizados.
-				</p>
-			</section>
+<!-- ═══ NAV ═══════════════════════════════════════ -->
+<nav class="nav" id="nav">
+  <a href="#" class="nav-logo">
+    <span class="bracket">[</span>lucas.santos<span class="bracket">]</span>
+  </a>
+  <div class="nav-links" id="nav-links">
+    <a href="#about"      data-i18n="nav.about">Sobre</a>
+    <a href="#experience" data-i18n="nav.experience">Experiência</a>
+    <a href="#skills"     data-i18n="nav.skills">Skills</a>
+    <a href="#studies"    data-i18n="nav.studies">Estudos</a>
+    <a href="#education"  data-i18n="nav.education">Formação</a>
+    <a href="#contact"    data-i18n="nav.contact">Contato</a>
+  </div>
+  <div class="nav-controls">
+    <div class="lang-sw">
+      <button class="lang-btn" data-lang="pt">PT</button>
+      <button class="lang-btn" data-lang="en">EN</button>
+      <button class="lang-btn" data-lang="es">ES</button>
+    </div>
+    <button class="theme-btn" id="theme-btn" title="Toggle theme">
+      <svg id="theme-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></svg>
+    </button>
+  </div>
+  <button class="hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
 
-			<section id="experiencias">
-				<h2>Um pouco da minha experiência profissional</h2>
+<!-- Mobile overlay -->
+<div class="mob-overlay" id="mob-overlay">
+  <a href="#about"      data-i18n="nav.about"      onclick="closeMob()">Sobre</a>
+  <a href="#experience" data-i18n="nav.experience"  onclick="closeMob()">Experiência</a>
+  <a href="#skills"     data-i18n="nav.skills"      onclick="closeMob()">Skills</a>
+  <a href="#studies"    data-i18n="nav.studies"     onclick="closeMob()">Estudos</a>
+  <a href="#education"  data-i18n="nav.education"   onclick="closeMob()">Formação</a>
+  <a href="#contact"    data-i18n="nav.contact"     onclick="closeMob()">Contato</a>
+  <div class="mob-controls">
+    <div class="lang-sw">
+      <button class="lang-btn" data-lang="pt">PT</button>
+      <button class="lang-btn" data-lang="en">EN</button>
+      <button class="lang-btn" data-lang="es">ES</button>
+    </div>
+    <button class="theme-btn" onclick="cycleTheme()">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" id="theme-icon-mob"></svg>
+    </button>
+  </div>
+</div>
 
-				<h3>Omni Digitalis Solutio</h3>
-				<small>desde 2018</small>
+<!-- ═══ HERO ═══════════════════════════════════════ -->
+<section class="hero" id="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-label">
+        <span class="hero-prompt">~/lucas.santos</span>
+        <span class="hero-available" data-i18n="hero.available">Disponível para oportunidades</span>
+      </div>
+      <h1 class="hero-name">Lucas<br><span>Santos</span></h1>
+      <div class="hero-role">
+        <span id="typewriter"></span><span class="cursor"></span>
+      </div>
+      <p class="hero-tagline" data-i18n="hero.tagline">
+        Arquitetando sistemas de alta disponibilidade há mais de 8 anos. Especialista em Node.js, TypeScript e AWS Serverless.
+      </p>
+      <div class="hero-actions">
+        <a href="#experience" class="btn btn-primary" data-i18n="hero.cta1">Ver Experiência</a>
+        <a href="#contact"    class="btn btn-outline"  data-i18n="hero.cta2">Entre em Contato</a>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <div class="photo-wrap">
+        <img src="./assets/images/me.png" alt="Lucas Santos">
+      </div>
+    </div>
+  </div>
+  <div class="hero-stats reveal">
+    <div class="stat">
+      <span class="stat-val">8+</span>
+      <span class="stat-lbl" data-i18n="hero.s1">anos de experiência</span>
+    </div>
+    <div class="stat">
+      <span class="stat-val">3</span>
+      <span class="stat-lbl" data-i18n="hero.s2">empresas</span>
+    </div>
+    <div class="stat">
+      <span class="stat-val">20+</span>
+      <span class="stat-lbl" data-i18n="hero.s3">tecnologias</span>
+    </div>
+  </div>
+</section>
 
-				<p class="desc">
-					Atuo no desenvolvimento de interfaces e regras de negócio de aplicações web utilizando <strong>ReactJS</strong>
-					e de aplicações mobile utilizando <strong>React Native</strong>.
-				</p>
-			</section>
+<!-- ═══ ABOUT ══════════════════════════════════════ -->
+<section class="section section-alt" id="about">
+  <div class="section-inner">
+    <div class="section-hd reveal">
+      <span class="section-tag" data-i18n="about.tag">sobre</span>
+      <h2 data-i18n="about.title">Sobre Mim</h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-text reveal reveal-delay-1">
+        <p data-i18n="about.p1">
+          Engenheiro de Software Sênior com mais de 8 anos de experiência em arquitetura e desenvolvimento de sistemas distribuídos de alta disponibilidade, com forte atuação em plataformas transacionais de alto volume e requisitos críticos de consistência e performance.
+        </p>
+        <p data-i18n="about.p2">
+          Especialista em Node.js, TypeScript e arquitetura serverless na AWS, com sólida experiência em microsserviços, mensageria, observabilidade e escalabilidade horizontal. Atuação recente em posição de liderança técnica, com vivência em definição arquitetural, mentoria e revisão de código.
+        </p>
+        <p data-i18n="about.p3">
+          Pós-graduado em Arquitetura de Software pela FIAP. Aberto a novos desafios técnicos em diferentes domínios de negócio.
+        </p>
+      </div>
+      <div class="about-highlights reveal reveal-delay-2" id="about-highlights"></div>
+    </div>
+  </div>
+</section>
 
-			<section id="formacao">
-				<h2>Minha Formação</h2>
+<!-- ═══ EXPERIENCE ═════════════════════════════════ -->
+<section class="section" id="experience">
+  <div class="section-inner">
+    <div class="section-hd reveal">
+      <span class="section-tag" data-i18n="exp.tag">experiência</span>
+      <h2 data-i18n="exp.title">Experiência Profissional</h2>
+    </div>
+    <div class="timeline" id="timeline"></div>
+  </div>
+</section>
 
-				<div class="formacao__item">
-					<h3>Universidade Federal de Mato Grosso do Sul</h3>
-					<h4>Sistemas de Informação</h4>
-					<small>2016 - 2021</small>
-				</div>
+<!-- ═══ SKILLS ═════════════════════════════════════ -->
+<section class="section section-alt" id="skills">
+  <div class="section-inner">
+    <div class="section-hd reveal">
+      <span class="section-tag" data-i18n="skills.tag">skills</span>
+      <h2 data-i18n="skills.title">Competências Técnicas</h2>
+    </div>
+    <div class="skills-grid" id="skills-grid"></div>
+  </div>
+</section>
 
-				<div class="formacao__item">
-					<h3>Etec - Centro Paula Souza <i class="fa fa-check"></i></h3>
-					<h4>Técnico em Informática</h4>
-					<small>2015 - 2016</small>
-				</div>
-			</section>
+<!-- ═══ STUDIES ════════════════════════════════════ -->
+<section class="section" id="studies">
+  <div class="section-inner">
+    <div class="section-hd reveal">
+      <span class="section-tag" data-i18n="studies.tag">aprendizado</span>
+      <h2 data-i18n="studies.title">Estudos Atuais</h2>
+      <p data-i18n="studies.sub">Tecnologias que estou explorando e aprofundando</p>
+    </div>
+    <div class="studies-grid" id="studies-grid"></div>
+  </div>
+</section>
 
-			<section id="habilidades">
-				<h2>O que eu sei</h2>
+<!-- ═══ EDUCATION ══════════════════════════════════ -->
+<section class="section section-alt" id="education">
+  <div class="section-inner">
+    <div class="section-hd reveal">
+      <span class="section-tag" data-i18n="edu.tag">formação</span>
+      <h2 data-i18n="edu.title">Formação Acadêmica</h2>
+    </div>
+    <div class="edu-list" id="edu-list"></div>
+  </div>
+</section>
 
-				<ul>
-					<li><img src="./assets/images/html5.svg" alt="HTML icon">HTML 5</li>
-					<li><img src="./assets/images/css3.svg" alt="CSS icon">CSS 3</li>
-					<li><img src="./assets/images/javascript.svg" alt="Javascript icon">Javascript</li>
-					<li><img src="./assets/images/react.png" alt="React icon">React.js</li>
-					<li><img src="./assets/images/react.png" alt="React Native icon">React Native</li>
-					<li><img src="./assets/images/nodejs.svg" alt="Node icon">Node.js</li>
-					<li><img src="./assets/images/java.svg" alt="Java icon">Java</li>
-					<li><img src="./assets/images/php.svg" alt="PHP icon">PHP</li>
-				</ul>
-			</section>
-		</div>
-	</main>
+<!-- ═══ CONTACT ════════════════════════════════════ -->
+<section class="section" id="contact">
+  <div class="section-inner">
+    <div class="section-hd reveal">
+      <span class="section-tag" data-i18n="contact.tag">contato</span>
+      <h2 data-i18n="contact.title">Contato</h2>
+      <p data-i18n="contact.sub">Disponível para oportunidades e colaborações</p>
+    </div>
+    <div class="contact-grid reveal reveal-delay-1" id="contact-grid"></div>
+  </div>
+</section>
 
-	<footer class="footer-content">
-		<div class="info">
-			<p>Desenvolvido por Lucas Santos</p>
-		</div>
-		<div class="contact">
-			<a href="https://github.com/lucas95santos" title="Meu Github">
-				<div class="contact__image">
-					<img src="./assets/images/github.svg" alt="Github icon">
-				</div>
-			</a>
-			<a href="https://www.linkedin.com/in/lucas95santos" title="Meu LinkedIn">
-				<div class="contact__image">
-					<img src="./assets/images/linkedin.svg" alt="Linkedin icon">
-				</div>
-			</a>
-		</div>
-	</footer>
+<!-- ═══ FOOTER ═════════════════════════════════════ -->
+<footer>
+  <span class="footer-text" data-i18n="footer.text">Desenvolvido por Lucas Santos · Rio de Janeiro, RJ</span>
+  <div class="footer-links">
+    <a href="https://github.com/lucas95santos" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://linkedin.com/in/lucas95santos" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
+</footer>
 
-	<script src="./scripts/theme.js"></script>
+<script>
+/* ═══════════════════════════════════════════════════
+   TRANSLATIONS
+═══════════════════════════════════════════════════ */
+const T = {
+  pt: {
+    nav: { about:'Sobre', experience:'Experiência', skills:'Skills', studies:'Estudos', education:'Formação', contact:'Contato' },
+    hero: {
+      available: 'Disponível para oportunidades',
+      titles: ['Senior Backend Engineer','Arquiteto de Sistemas Distribuídos','Tech Lead Backend','Especialista Node.js & TypeScript','Engenheiro AWS Serverless'],
+      tagline: 'Arquitetando sistemas de alta disponibilidade há mais de 8 anos. Especialista em Node.js, TypeScript e AWS Serverless.',
+      cta1:'Ver Experiência', cta2:'Entre em Contato',
+      s1:'anos de experiência', s2:'empresas', s3:'tecnologias',
+    },
+    about: {
+      tag:'sobre', title:'Sobre Mim',
+      p1:'Engenheiro de Software Sênior com mais de 8 anos de experiência em arquitetura e desenvolvimento de sistemas distribuídos de alta disponibilidade, com forte atuação em plataformas transacionais de alto volume e requisitos críticos de consistência e performance.',
+      p2:'Especialista em Node.js, TypeScript e arquitetura serverless na AWS, com sólida experiência em microsserviços, mensageria, observabilidade e escalabilidade horizontal. Atuação recente em posição de liderança técnica, com vivência em definição arquitetural, mentoria e revisão de código.',
+      p3:'Pós-graduado em Arquitetura de Software pela FIAP. Aberto a novos desafios técnicos em diferentes domínios de negócio.',
+      highlights: [
+        { icon:'⚡', label:'Alta Performance', desc:'Sistemas transacionais de alto volume' },
+        { icon:'🏗', label:'Arquitetura', desc:'Microsserviços & Serverless' },
+        { icon:'👥', label:'Liderança Técnica', desc:'Mentoria & Code Review' },
+        { icon:'☁️', label:'AWS Expert', desc:'Lambda, ECS, DynamoDB, SQS' },
+      ],
+    },
+    exp: {
+      tag:'experiência', title:'Experiência Profissional', remote:'Remoto',
+      jobs: [
+        {
+          company:'Afinz', role:'Senior Backend Engineer / Tech Lead',
+          start:'Ago 2024', end:'Fev 2026',
+          bullets:[
+            'Arquitetura e desenvolvimento de microsserviços e APIs RESTful de missão crítica em Node.js, TypeScript, NestJS e serverless AWS (Lambda, API Gateway, SQS, DynamoDB, ECS, EKS).',
+            'Design de sistemas distribuídos com foco em alta disponibilidade, escalabilidade horizontal e tolerância a falhas, processando volumes transacionais elevados.',
+            'Otimização de performance e custos em ambientes serverless, utilizando Redis para cache distribuído e SQS/EventBridge para comunicação assíncrona.',
+            'Liderança técnica do time backend: code reviews, refinamentos, mentoria e suporte ao crescimento técnico da equipe.',
+            'Colaboração com Produto e Engenharia em decisões estratégicas, traduzindo requisitos de negócio em soluções escaláveis.',
+          ],
+          tech:['Node.js','TypeScript','NestJS','AWS Lambda','DynamoDB','SQS','Redis','ECS','EKS','EventBridge'],
+        },
+        {
+          company:'Fuston Services', role:'Backend Engineer',
+          start:'Mar 2022', end:'Ago 2024',
+          bullets:[
+            'Desenvolvimento de APIs RESTful em Node.js, TypeScript e arquitetura serverless na AWS para produtos digitais de alta disponibilidade.',
+            'Construção e manutenção de serviços backend escaláveis utilizando Lambda, API Gateway, SQS, S3 e DynamoDB.',
+            'Atuação como engenheiro alocado em projetos de longo prazo, com participação no ciclo completo: design, implementação, deploy e operação.',
+            'Colaboração com times multidisciplinares em squads ágeis para entrega contínua de produtos digitais.',
+          ],
+          tech:['Node.js','TypeScript','AWS Lambda','API Gateway','DynamoDB','S3','SQS'],
+        },
+        {
+          company:'Easy Delivery', role:'Full Stack Engineer',
+          start:'Jul 2021', end:'Mar 2022',
+          bullets:[
+            'Análise, manutenção e desenvolvimento de APIs RESTful em Node.js, Express e Sequelize em plataforma de logística de delivery.',
+            'Implementação de melhorias de performance, correções e novas funcionalidades em frontend e backend.',
+            'Integração entre múltiplos serviços e bancos de dados relacionais em ambiente de operações em tempo real.',
+          ],
+          tech:['Node.js','Express','Sequelize','PostgreSQL','MySQL'],
+        },
+      ],
+    },
+    skills: {
+      tag:'skills', title:'Competências Técnicas',
+      groups: [
+        { label:'Linguagens', items:['Node.js','TypeScript','JavaScript','SQL'] },
+        { label:'Frameworks', items:['NestJS','Express','Serverless Framework'] },
+        { label:'Cloud AWS', items:['Lambda','API Gateway','SQS','S3','DynamoDB','ECS','EKS','CloudWatch','EventBridge'] },
+        { label:'Bancos de Dados', items:['DynamoDB','PostgreSQL','MongoDB','MySQL','Redis'] },
+        { label:'Mensageria', items:['SQS','RabbitMQ','EventBridge'] },
+        { label:'DevOps', items:['Docker','Kubernetes','CI/CD','Git'] },
+        { label:'Arquitetura', items:['Microsserviços','Serverless','Event-Driven','DDD','Clean Architecture','RESTful APIs'] },
+        { label:'Práticas', items:['Code Review','Mentoria','Observabilidade','Testes Automatizados','Agile'] },
+      ],
+    },
+    studies: {
+      tag:'aprendizado', title:'Estudos Atuais',
+      sub:'Tecnologias que estou explorando e aprofundando',
+      badge:'Em progresso',
+      items: [
+        { icon:'Go',  name:'Go',           desc:'Linguagem para sistemas de alta performance e concorrência' },
+        { icon:'Jv',  name:'Java',          desc:'Ecossistema Spring e arquitetura enterprise' },
+        { icon:'Py',  name:'Python',         desc:'Automação, scripts e ciência de dados' },
+        { icon:'⚛',  name:'React / Next.js', desc:'Frontend moderno e aplicações full-stack' },
+        { icon:'AWS', name:'AWS Practitioner',desc:'Certificação oficial AWS Cloud Practitioner' },
+      ],
+    },
+    edu: {
+      tag:'formação', title:'Formação Acadêmica',
+      items: [
+        { type:'Pós-graduação', degree:'Arquitetura de Software', inst:'FIAP', year:'2024' },
+        { type:'Bacharelado',   degree:'Sistemas de Informação',  inst:'Universidade Federal de Mato Grosso do Sul (UFMS)', year:'2016 – 2021' },
+      ],
+    },
+    contact: {
+      tag:'contato', title:'Contato',
+      sub:'Disponível para oportunidades e colaborações',
+      items: [
+        { label:'E-mail',     val:'lucasasantos.dev@gmail.com', href:'mailto:lucasasantos.dev@gmail.com', icon:'email' },
+        { label:'LinkedIn',   val:'linkedin.com/in/lucas95santos', href:'https://linkedin.com/in/lucas95santos', icon:'linkedin' },
+        { label:'GitHub',     val:'github.com/lucas95santos', href:'https://github.com/lucas95santos', icon:'github' },
+        { label:'Localização',val:'Rio de Janeiro, RJ', href:null, icon:'location' },
+      ],
+    },
+    footer: { text:'Desenvolvido por Lucas Santos · Rio de Janeiro, RJ' },
+  },
+
+  en: {
+    nav: { about:'About', experience:'Experience', skills:'Skills', studies:'Studies', education:'Education', contact:'Contact' },
+    hero: {
+      available:'Available for opportunities',
+      titles:['Senior Backend Engineer','Distributed Systems Architect','Backend Tech Lead','Node.js & TypeScript Expert','AWS Serverless Engineer'],
+      tagline:'Architecting high-availability systems for over 8 years. Specialist in Node.js, TypeScript and AWS Serverless.',
+      cta1:'View Experience', cta2:'Get in Touch',
+      s1:'years of experience', s2:'companies', s3:'technologies',
+    },
+    about: {
+      tag:'about', title:'About Me',
+      p1:'Senior Software Engineer with over 8 years of experience in architecting and developing high-availability distributed systems, with strong focus on high-volume transactional platforms and critical consistency and performance requirements.',
+      p2:'Specialist in Node.js, TypeScript, and serverless AWS architecture, with solid experience in microservices, messaging, observability, and horizontal scalability. Recent experience in tech leadership roles with background in architectural definition, mentoring, and code review.',
+      p3:'Postgraduate in Software Architecture from FIAP. Open to new technical challenges across different business domains.',
+      highlights:[
+        { icon:'⚡', label:'High Performance', desc:'High-volume transactional systems' },
+        { icon:'🏗', label:'Architecture',     desc:'Microservices & Serverless' },
+        { icon:'👥', label:'Tech Leadership',  desc:'Mentoring & Code Review' },
+        { icon:'☁️', label:'AWS Expert',       desc:'Lambda, ECS, DynamoDB, SQS' },
+      ],
+    },
+    exp: {
+      tag:'experience', title:'Professional Experience', remote:'Remote',
+      jobs: [
+        {
+          company:'Afinz', role:'Senior Backend Engineer / Tech Lead',
+          start:'Aug 2024', end:'Feb 2026',
+          bullets:[
+            'Architecture and development of mission-critical microservices and RESTful APIs in Node.js, TypeScript, NestJS and serverless AWS (Lambda, API Gateway, SQS, DynamoDB, ECS, EKS).',
+            'Design of distributed systems focused on high availability, horizontal scalability and fault tolerance, processing high transactional volumes.',
+            'Performance and cost optimization in serverless environments, using Redis for distributed cache and SQS/EventBridge for async communication.',
+            'Technical leadership of the backend team: code reviews, refinements, mentoring and supporting technical growth of the team.',
+            'Collaboration with Product and Engineering on strategic decisions, translating business requirements into scalable technical solutions.',
+          ],
+          tech:['Node.js','TypeScript','NestJS','AWS Lambda','DynamoDB','SQS','Redis','ECS','EKS','EventBridge'],
+        },
+        {
+          company:'Fuston Services', role:'Backend Engineer',
+          start:'Mar 2022', end:'Aug 2024',
+          bullets:[
+            'Development of RESTful APIs in Node.js, TypeScript and serverless AWS architecture for high-availability digital products.',
+            'Construction and maintenance of scalable backend services using Lambda, API Gateway, SQS, S3 and DynamoDB.',
+            'Embedded engineer on long-term projects, participating in the full development cycle: design, implementation, deploy and operations.',
+            'Collaboration with multidisciplinary teams in agile squads for continuous delivery of digital products.',
+          ],
+          tech:['Node.js','TypeScript','AWS Lambda','API Gateway','DynamoDB','S3','SQS'],
+        },
+        {
+          company:'Easy Delivery', role:'Full Stack Engineer',
+          start:'Jul 2021', end:'Mar 2022',
+          bullets:[
+            'Analysis, maintenance and development of RESTful APIs in Node.js, Express and Sequelize on a delivery logistics platform.',
+            'Implementation of performance improvements, fixes and new features on frontend and backend.',
+            'Integration across multiple services and relational databases in real-time operations environment.',
+          ],
+          tech:['Node.js','Express','Sequelize','PostgreSQL','MySQL'],
+        },
+      ],
+    },
+    skills: {
+      tag:'skills', title:'Technical Skills',
+      groups: [
+        { label:'Languages', items:['Node.js','TypeScript','JavaScript','SQL'] },
+        { label:'Frameworks', items:['NestJS','Express','Serverless Framework'] },
+        { label:'Cloud AWS', items:['Lambda','API Gateway','SQS','S3','DynamoDB','ECS','EKS','CloudWatch','EventBridge'] },
+        { label:'Databases', items:['DynamoDB','PostgreSQL','MongoDB','MySQL','Redis'] },
+        { label:'Messaging', items:['SQS','RabbitMQ','EventBridge'] },
+        { label:'DevOps', items:['Docker','Kubernetes','CI/CD','Git'] },
+        { label:'Architecture', items:['Microservices','Serverless','Event-Driven','DDD','Clean Architecture','RESTful APIs'] },
+        { label:'Practices', items:['Code Review','Mentoring','Observability','Automated Testing','Agile'] },
+      ],
+    },
+    studies: {
+      tag:'learning', title:'Current Studies',
+      sub:'Technologies I am exploring and deepening',
+      badge:'In progress',
+      items:[
+        { icon:'Go',  name:'Go',            desc:'Language for high-performance and concurrent systems' },
+        { icon:'Jv',  name:'Java',           desc:'Spring ecosystem and enterprise architecture' },
+        { icon:'Py',  name:'Python',          desc:'Automation, scripting and data science' },
+        { icon:'⚛',  name:'React / Next.js', desc:'Modern frontend and full-stack applications' },
+        { icon:'AWS', name:'AWS Practitioner',desc:'Official AWS Cloud Practitioner Certification' },
+      ],
+    },
+    edu: {
+      tag:'education', title:'Education',
+      items:[
+        { type:'Postgraduate', degree:'Software Architecture', inst:'FIAP', year:'2024' },
+        { type:'Bachelor',     degree:'Information Systems',   inst:'Federal University of Mato Grosso do Sul (UFMS)', year:'2016 – 2021' },
+      ],
+    },
+    contact: {
+      tag:'contact', title:'Contact',
+      sub:'Available for opportunities and collaborations',
+      items:[
+        { label:'Email',    val:'lucasasantos.dev@gmail.com', href:'mailto:lucasasantos.dev@gmail.com', icon:'email' },
+        { label:'LinkedIn', val:'linkedin.com/in/lucas95santos', href:'https://linkedin.com/in/lucas95santos', icon:'linkedin' },
+        { label:'GitHub',   val:'github.com/lucas95santos', href:'https://github.com/lucas95santos', icon:'github' },
+        { label:'Location', val:'Rio de Janeiro, RJ', href:null, icon:'location' },
+      ],
+    },
+    footer:{ text:'Built by Lucas Santos · Rio de Janeiro, RJ' },
+  },
+
+  es: {
+    nav: { about:'Sobre mí', experience:'Experiencia', skills:'Skills', studies:'Estudios', education:'Formación', contact:'Contacto' },
+    hero: {
+      available:'Disponible para oportunidades',
+      titles:['Ingeniero Backend Senior','Arquitecto de Sistemas Distribuidos','Tech Lead Backend','Especialista Node.js & TypeScript','Ingeniero AWS Serverless'],
+      tagline:'Arquitectando sistemas de alta disponibilidad por más de 8 años. Especialista en Node.js, TypeScript y AWS Serverless.',
+      cta1:'Ver Experiencia', cta2:'Ponerse en Contacto',
+      s1:'años de experiencia', s2:'empresas', s3:'tecnologías',
+    },
+    about: {
+      tag:'sobre mí', title:'Sobre Mí',
+      p1:'Ingeniero de Software Senior con más de 8 años de experiencia en arquitectura y desarrollo de sistemas distribuidos de alta disponibilidad, con fuerte actuación en plataformas transaccionales de alto volumen y requisitos críticos de consistencia y rendimiento.',
+      p2:'Especialista en Node.js, TypeScript y arquitectura serverless en AWS, con sólida experiencia en microservicios, mensajería, observabilidad y escalabilidad horizontal. Reciente experiencia en posición de liderazgo técnico, con vivencia en definición arquitectural, mentoría y revisión de código.',
+      p3:'Postgrado en Arquitectura de Software por FIAP. Abierto a nuevos desafíos técnicos en diferentes dominios de negocio.',
+      highlights:[
+        { icon:'⚡', label:'Alto Rendimiento', desc:'Sistemas transaccionales de alto volumen' },
+        { icon:'🏗', label:'Arquitectura',     desc:'Microservicios & Serverless' },
+        { icon:'👥', label:'Liderazgo Técnico',desc:'Mentoría & Code Review' },
+        { icon:'☁️', label:'AWS Expert',       desc:'Lambda, ECS, DynamoDB, SQS' },
+      ],
+    },
+    exp: {
+      tag:'experiencia', title:'Experiencia Profesional', remote:'Remoto',
+      jobs:[
+        {
+          company:'Afinz', role:'Senior Backend Engineer / Tech Lead',
+          start:'Ago 2024', end:'Feb 2026',
+          bullets:[
+            'Arquitectura y desarrollo de microservicios y APIs RESTful de misión crítica en Node.js, TypeScript, NestJS y serverless AWS (Lambda, API Gateway, SQS, DynamoDB, ECS, EKS).',
+            'Diseño de sistemas distribuidos enfocados en alta disponibilidad, escalabilidad horizontal y tolerancia a fallos.',
+            'Optimización de rendimiento y costos en entornos serverless, usando Redis para caché distribuida y SQS/EventBridge para comunicación asíncrona.',
+            'Liderazgo técnico del equipo backend: revisiones de código, refinamientos, mentoría y apoyo al crecimiento técnico.',
+            'Colaboración con Producto e Ingeniería en decisiones estratégicas, traduciendo requisitos de negocio en soluciones escalables.',
+          ],
+          tech:['Node.js','TypeScript','NestJS','AWS Lambda','DynamoDB','SQS','Redis','ECS','EKS','EventBridge'],
+        },
+        {
+          company:'Fuston Services', role:'Backend Engineer',
+          start:'Mar 2022', end:'Ago 2024',
+          bullets:[
+            'Desarrollo de APIs RESTful en Node.js, TypeScript y arquitectura serverless en AWS para productos digitales de alta disponibilidad.',
+            'Construcción y mantenimiento de servicios backend escalables usando Lambda, API Gateway, SQS, S3 y DynamoDB.',
+            'Ingeniero asignado en proyectos de largo plazo, participando en el ciclo completo: diseño, implementación, deploy y operación.',
+            'Colaboración con equipos multidisciplinarios en squads ágiles para entrega continua de productos digitales.',
+          ],
+          tech:['Node.js','TypeScript','AWS Lambda','API Gateway','DynamoDB','S3','SQS'],
+        },
+        {
+          company:'Easy Delivery', role:'Full Stack Engineer',
+          start:'Jul 2021', end:'Mar 2022',
+          bullets:[
+            'Análisis, mantenimiento y desarrollo de APIs RESTful en Node.js, Express y Sequelize en plataforma de logística de delivery.',
+            'Implementación de mejoras de rendimiento, correcciones y nuevas funcionalidades en frontend y backend.',
+            'Integración entre múltiples servicios y bases de datos relacionales en entorno de operaciones en tiempo real.',
+          ],
+          tech:['Node.js','Express','Sequelize','PostgreSQL','MySQL'],
+        },
+      ],
+    },
+    skills: {
+      tag:'skills', title:'Competencias Técnicas',
+      groups:[
+        { label:'Lenguajes', items:['Node.js','TypeScript','JavaScript','SQL'] },
+        { label:'Frameworks', items:['NestJS','Express','Serverless Framework'] },
+        { label:'Cloud AWS', items:['Lambda','API Gateway','SQS','S3','DynamoDB','ECS','EKS','CloudWatch','EventBridge'] },
+        { label:'Bases de Datos', items:['DynamoDB','PostgreSQL','MongoDB','MySQL','Redis'] },
+        { label:'Mensajería', items:['SQS','RabbitMQ','EventBridge'] },
+        { label:'DevOps', items:['Docker','Kubernetes','CI/CD','Git'] },
+        { label:'Arquitectura', items:['Microservicios','Serverless','Event-Driven','DDD','Clean Architecture','RESTful APIs'] },
+        { label:'Prácticas', items:['Code Review','Mentoría','Observabilidad','Pruebas Automatizadas','Agile'] },
+      ],
+    },
+    studies: {
+      tag:'aprendizaje', title:'Estudios Actuales',
+      sub:'Tecnologías que estoy explorando y profundizando',
+      badge:'En progreso',
+      items:[
+        { icon:'Go',  name:'Go',            desc:'Lenguaje para sistemas de alto rendimiento y concurrencia' },
+        { icon:'Jv',  name:'Java',           desc:'Ecosistema Spring y arquitectura enterprise' },
+        { icon:'Py',  name:'Python',          desc:'Automatización, scripts y ciencia de datos' },
+        { icon:'⚛',  name:'React / Next.js', desc:'Frontend moderno y aplicaciones full-stack' },
+        { icon:'AWS', name:'AWS Practitioner',desc:'Certificación oficial AWS Cloud Practitioner' },
+      ],
+    },
+    edu: {
+      tag:'formación', title:'Formación Académica',
+      items:[
+        { type:'Postgrado', degree:'Arquitectura de Software', inst:'FIAP', year:'2024' },
+        { type:'Licenciatura', degree:'Sistemas de Información', inst:'Universidad Federal de Mato Grosso do Sul (UFMS)', year:'2016 – 2021' },
+      ],
+    },
+    contact: {
+      tag:'contacto', title:'Contacto',
+      sub:'Disponible para oportunidades y colaboraciones',
+      items:[
+        { label:'Email',      val:'lucasasantos.dev@gmail.com', href:'mailto:lucasasantos.dev@gmail.com', icon:'email' },
+        { label:'LinkedIn',   val:'linkedin.com/in/lucas95santos', href:'https://linkedin.com/in/lucas95santos', icon:'linkedin' },
+        { label:'GitHub',     val:'github.com/lucas95santos', href:'https://github.com/lucas95santos', icon:'github' },
+        { label:'Ubicación',  val:'Rio de Janeiro, RJ', href:null, icon:'location' },
+      ],
+    },
+    footer:{ text:'Desarrollado por Lucas Santos · Rio de Janeiro, RJ' },
+  },
+};
+
+/* ═══════════════════════════════════════════════════
+   ICONS (inline SVG paths)
+═══════════════════════════════════════════════════ */
+const ICONS = {
+  moon:     '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>',
+  sun:      '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>',
+  monitor:  '<rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/>',
+  email:    '<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>',
+  linkedin: '<path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>',
+  github:   '<path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>',
+  location: '<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>',
+};
+
+function svgIcon(key) {
+  return `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${ICONS[key]||''}</svg>`;
+}
+
+const TECH_ICONS = {
+  'Node.js':'nodejs','TypeScript':'typescript','JavaScript':'javascript','SQL':'sql',
+  'NestJS':'nestjs','Express':'express','Serverless Framework':'serverless',
+  'Lambda':'aws','API Gateway':'aws','SQS':'aws','S3':'aws',
+  'DynamoDB':'aws','ECS':'aws','EKS':'aws','CloudWatch':'aws','EventBridge':'aws',
+  'AWS Lambda':'aws','AWS Practitioner':'aws',
+  'PostgreSQL':'postgresql','MongoDB':'mongodb','MySQL':'mysql','Redis':'redis',
+  'RabbitMQ':'rabbitmq','Docker':'docker','Kubernetes':'kubernetes','Git':'git',
+  'Go':'go','Java':'java','Python':'python','React / Next.js':'react',
+};
+
+function techIconImg(name, size) {
+  const f = TECH_ICONS[name];
+  if (!f) return '';
+  return `<img src="./assets/images/${f}.svg" width="${size||14}" height="${size||14}" alt="" loading="lazy">`;
+}
+
+/* ═══════════════════════════════════════════════════
+   STATE
+═══════════════════════════════════════════════════ */
+let currentLang = localStorage.getItem('ls-lang') || 'pt';
+let themeMode   = localStorage.getItem('ls-theme') || 'system'; // 'system'|'light'|'dark'
+
+/* ═══════════════════════════════════════════════════
+   THEME
+═══════════════════════════════════════════════════ */
+const themeIcons = { dark:'moon', light:'sun', system:'monitor' };
+const themeLabels = { dark:'Dark', light:'Light', system:'System' };
+
+function applyTheme(mode) {
+  themeMode = mode;
+  localStorage.setItem('ls-theme', mode);
+  const root = document.documentElement;
+  if (mode === 'system') root.removeAttribute('data-theme');
+  else root.setAttribute('data-theme', mode);
+  updateThemeIcon();
+}
+
+function updateThemeIcon() {
+  const path = ICONS[themeIcons[themeMode]] || ICONS.monitor;
+  document.querySelectorAll('#theme-icon, #theme-icon-mob').forEach(el => {
+    el.innerHTML = path;
+  });
+}
+
+function cycleTheme() {
+  const order = ['system','light','dark'];
+  const next = order[(order.indexOf(themeMode)+1) % order.length];
+  applyTheme(next);
+}
+
+/* ═══════════════════════════════════════════════════
+   LANGUAGE
+═══════════════════════════════════════════════════ */
+function t(path) {
+  return path.split('.').reduce((o,k) => o?.[k], T[currentLang]) ?? path;
+}
+
+function setLang(lang) {
+  currentLang = lang;
+  localStorage.setItem('ls-lang', lang);
+  document.documentElement.lang = lang === 'pt' ? 'pt-BR' : lang === 'es' ? 'es' : 'en';
+
+  // Update all static data-i18n
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    const val = t(key);
+    if (val && val !== key) el.textContent = val;
+  });
+
+  // Update lang buttons
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.lang === lang);
+  });
+
+  // Re-render dynamic sections
+  renderHighlights();
+  renderTimeline();
+  renderSkills();
+  renderStudies();
+  renderEducation();
+  renderContact();
+  renderFooter();
+
+  // Reset typewriter
+  startTypewriter();
+}
+
+/* ═══════════════════════════════════════════════════
+   RENDERERS
+═══════════════════════════════════════════════════ */
+function renderHighlights() {
+  const el = document.getElementById('about-highlights');
+  if (!el) return;
+  const hl = T[currentLang].about.highlights;
+  el.innerHTML = hl.map(h => `
+    <div class="highlight-card">
+      <div class="highlight-icon">${h.icon}</div>
+      <div class="highlight-label">${h.label}</div>
+      <div class="highlight-desc">${h.desc}</div>
+    </div>
+  `).join('');
+}
+
+function renderTimeline() {
+  const el = document.getElementById('timeline');
+  if (!el) return;
+  const { jobs, remote } = T[currentLang].exp;
+  el.innerHTML = jobs.map((j,i) => `
+    <div class="tl-item reveal${i>0?' reveal-delay-'+Math.min(i,3):''}">
+      <div class="tl-head">
+        <div>
+          <div class="tl-company">${j.company}</div>
+          <div class="tl-role">${j.role}</div>
+          <div class="tl-location">${remote}</div>
+        </div>
+        <span class="tl-period">${j.start} — ${j.end}</span>
+      </div>
+      <ul class="tl-bullets">
+        ${j.bullets.map(b=>`<li>${b}</li>`).join('')}
+      </ul>
+      <div class="tl-tags">${j.tech.map(t=>`<span class="tl-tag">${t}</span>`).join('')}</div>
+    </div>
+  `).join('');
+  observeReveal();
+}
+
+function renderSkills() {
+  const el = document.getElementById('skills-grid');
+  if (!el) return;
+  const { groups } = T[currentLang].skills;
+  el.innerHTML = groups.map((g,i) => `
+    <div class="skill-group reveal${i>0?' reveal-delay-'+Math.min(i%3+1,3):''}">
+      <div class="skill-group-label">${g.label}</div>
+      <div class="skill-tags">${g.items.map(s=>`<span class="skill-tag">${techIconImg(s)}${s}</span>`).join('')}</div>
+    </div>
+  `).join('');
+  observeReveal();
+}
+
+function renderStudies() {
+  const el = document.getElementById('studies-grid');
+  if (!el) return;
+  const { items, badge } = T[currentLang].studies;
+  el.innerHTML = items.map((s,i) => {
+    const imgHtml = techIconImg(s.name, 36);
+    const iconContent = imgHtml || `<span style="font-family:var(--fM);font-size:1rem;font-weight:500;color:var(--tx2)">${s.icon}</span>`;
+    return `
+    <div class="study-card reveal${i>0?' reveal-delay-'+Math.min(i,3):''}">
+      <span class="study-icon">${iconContent}</span>
+      <div class="study-name">${s.name}</div>
+      <div class="study-desc">${s.desc}</div>
+      <span class="study-badge">${badge}</span>
+    </div>
+  `;
+  }).join('');
+  observeReveal();
+}
+
+function renderEducation() {
+  const el = document.getElementById('edu-list');
+  if (!el) return;
+  const { items } = T[currentLang].edu;
+  el.innerHTML = items.map((e,i) => `
+    <div class="edu-item reveal${i>0?' reveal-delay-1':''}">
+      <span class="edu-year">${e.year}</span>
+      <div>
+        <div class="edu-type">${e.type}</div>
+        <div class="edu-degree">${e.degree}</div>
+        <div class="edu-inst">${e.inst}</div>
+      </div>
+    </div>
+  `).join('');
+  observeReveal();
+}
+
+function renderContact() {
+  const el = document.getElementById('contact-grid');
+  if (!el) return;
+  const { items } = T[currentLang].contact;
+  el.innerHTML = items.map(c => {
+    const inner = `
+      <div class="contact-icon">${svgIcon(c.icon)}</div>
+      <div>
+        <div class="contact-lbl">${c.label}</div>
+        <div class="contact-val">${c.val}</div>
+      </div>
+    `;
+    return c.href
+      ? `<a href="${c.href}" class="contact-item" target="${c.href.startsWith('http')?'_blank':''}" rel="noopener">${inner}</a>`
+      : `<div class="contact-item">${inner}</div>`;
+  }).join('');
+}
+
+function renderFooter() {
+  const el = document.querySelector('[data-i18n="footer.text"]');
+  if (el) el.textContent = T[currentLang].footer.text;
+}
+
+/* ═══════════════════════════════════════════════════
+   TYPEWRITER
+═══════════════════════════════════════════════════ */
+let twTimer, twIndex = 0, twChar = 0, twDeleting = false;
+
+function startTypewriter() {
+  clearTimeout(twTimer);
+  twIndex = 0; twChar = 0; twDeleting = false;
+  tick();
+}
+
+function tick() {
+  const titles = T[currentLang].hero.titles;
+  const current = titles[twIndex % titles.length];
+  const el = document.getElementById('typewriter');
+  if (!el) return;
+
+  if (!twDeleting) {
+    el.textContent = current.slice(0, ++twChar);
+    if (twChar === current.length) {
+      twDeleting = true;
+      twTimer = setTimeout(tick, 2200);
+    } else {
+      twTimer = setTimeout(tick, 68);
+    }
+  } else {
+    el.textContent = current.slice(0, --twChar);
+    if (twChar === 0) {
+      twDeleting = false;
+      twIndex++;
+      twTimer = setTimeout(tick, 400);
+    } else {
+      twTimer = setTimeout(tick, 38);
+    }
+  }
+}
+
+/* ═══════════════════════════════════════════════════
+   SCROLL REVEAL
+═══════════════════════════════════════════════════ */
+let revealObserver;
+
+function observeReveal() {
+  if (revealObserver) {
+    document.querySelectorAll('.reveal:not(.show)').forEach(el => revealObserver.observe(el));
+    return;
+  }
+  revealObserver = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('show'); revealObserver.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+}
+
+/* ═══════════════════════════════════════════════════
+   NAV SCROLL + ACTIVE
+═══════════════════════════════════════════════════ */
+function initNav() {
+  const nav = document.getElementById('nav');
+  const sections = document.querySelectorAll('section[id]');
+  const links = document.querySelectorAll('.nav-links a');
+
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 120) current = s.id;
+    });
+    links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#'+current));
+  }, { passive: true });
+}
+
+/* ═══════════════════════════════════════════════════
+   MOBILE MENU
+═══════════════════════════════════════════════════ */
+function closeMob() {
+  document.getElementById('mob-overlay').classList.remove('open');
+  document.getElementById('hamburger').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function initMobileMenu() {
+  const ham = document.getElementById('hamburger');
+  const overlay = document.getElementById('mob-overlay');
+  ham.addEventListener('click', () => {
+    const isOpen = overlay.classList.toggle('open');
+    ham.classList.toggle('open', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+}
+
+/* ═══════════════════════════════════════════════════
+   INIT
+═══════════════════════════════════════════════════ */
+document.addEventListener('DOMContentLoaded', () => {
+  // Apply stored theme
+  if (themeMode !== 'system') applyTheme(themeMode);
+  else updateThemeIcon();
+
+  // Wire theme buttons
+  document.getElementById('theme-btn').addEventListener('click', cycleTheme);
+
+  // Wire lang buttons
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.addEventListener('click', () => setLang(btn.dataset.lang));
+    btn.classList.toggle('active', btn.dataset.lang === currentLang);
+  });
+
+  // Initial render
+  setLang(currentLang);
+  initNav();
+  initMobileMenu();
+  observeReveal();
+  startTypewriter();
+});
+</script>
 </body>
-
 </html>
