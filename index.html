@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lucas Santos — Senior Backend Engineer</title>
-<meta name="description" content="Senior Backend Engineer especializado em Node.js, TypeScript e AWS. 8+ anos de experiência em sistemas distribuídos de alta disponibilidade.">
-<meta property="og:title" content="Lucas Santos — Senior Backend Engineer">
-<meta property="og:description" content="Senior Backend Engineer especializado em Node.js, TypeScript e AWS.">
+<title>Lucas Santos — Senior Backend Engineer & Tech Lead</title>
+<meta name="description" content="Senior Backend Engineer & Tech Lead especializado em Node.js, TypeScript, NestJS e AWS. 8+ anos construindo plataformas transacionais de alto volume e alta disponibilidade.">
+<meta property="og:title" content="Lucas Santos — Senior Backend Engineer & Tech Lead">
+<meta property="og:description" content="Senior Backend Engineer & Tech Lead especializado em Node.js, TypeScript, NestJS e AWS.">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -269,7 +269,7 @@ ul{list-style:none}
 /* Stats bar */
 .hero-stats{
   max-width:var(--mw);margin:2rem auto 0;width:100%;
-  display:grid;grid-template-columns:repeat(3,1fr);
+  display:grid;grid-template-columns:repeat(4,1fr);
   border:1px solid var(--bdr);border-radius:var(--r2);
   background:var(--surf);overflow:hidden;
 }
@@ -561,7 +561,9 @@ footer{
 @media(max-width:768px){
   .nav-links,.nav-controls{display:none}
   .hamburger{display:flex}
-  .hero-stats{grid-template-columns:repeat(3,1fr)}
+  .hero-stats{grid-template-columns:repeat(2,1fr)}
+  .stat:nth-child(2){border-right:none}
+  .stat:nth-child(-n+2){border-bottom:1px solid var(--bdr)}
   .about-highlights{grid-template-columns:1fr}
   .skills-grid{grid-template-columns:1fr}
   .studies-grid{grid-template-columns:1fr 1fr}
@@ -643,7 +645,7 @@ footer{
         <span id="typewriter"></span><span class="cursor"></span>
       </div>
       <p class="hero-tagline" data-i18n="hero.tagline">
-        Arquitetando sistemas de alta disponibilidade há mais de 8 anos. Especialista em Node.js, TypeScript e AWS Serverless.
+        Construindo e liderando plataformas transacionais de alto volume há mais de 8 anos. Especialista em Node.js, TypeScript, NestJS e AWS.
       </p>
       <div class="hero-actions">
         <a href="#experience" class="btn btn-primary" data-i18n="hero.cta1">Ver Experiência</a>
@@ -662,12 +664,16 @@ footer{
       <span class="stat-lbl" data-i18n="hero.s1">anos de experiência</span>
     </div>
     <div class="stat">
-      <span class="stat-val">3</span>
-      <span class="stat-lbl" data-i18n="hero.s2">empresas</span>
+      <span class="stat-val">2M+</span>
+      <span class="stat-lbl" data-i18n="hero.s2">usuários atendidos</span>
     </div>
     <div class="stat">
-      <span class="stat-val">20+</span>
-      <span class="stat-lbl" data-i18n="hero.s3">tecnologias</span>
+      <span class="stat-val">12M</span>
+      <span class="stat-lbl" data-i18n="hero.s3">requisições/dia</span>
+    </div>
+    <div class="stat">
+      <span class="stat-val">10x</span>
+      <span class="stat-lbl" data-i18n="hero.s4">APIs mais rápidas</span>
     </div>
   </div>
 </section>
@@ -682,13 +688,13 @@ footer{
     <div class="about-grid">
       <div class="about-text reveal reveal-delay-1">
         <p data-i18n="about.p1">
-          Engenheiro de Software Sênior com mais de 8 anos de experiência em arquitetura e desenvolvimento de sistemas distribuídos de alta disponibilidade, com forte atuação em plataformas transacionais de alto volume e requisitos críticos de consistência e performance.
+          Engenheiro de Software Backend Sênior e Tech Lead com mais de 8 anos de experiência construindo e liderando plataformas transacionais de alto volume e alta disponibilidade em Node.js e TypeScript. Atuação recente em sistemas que atendem +2 milhões de usuários e processam ~12 milhões de requisições/dia, com requisitos críticos de consistência, performance e disponibilidade.
         </p>
         <p data-i18n="about.p2">
-          Especialista em Node.js, TypeScript e arquitetura serverless na AWS, com sólida experiência em microsserviços, mensageria, observabilidade e escalabilidade horizontal. Atuação recente em posição de liderança técnica, com vivência em definição arquitetural, mentoria e revisão de código.
+          Experiência sólida em arquitetura de microsserviços, comunicação assíncrona (SNS/SQS, Kafka, RabbitMQ), cache distribuído (Redis), observabilidade e segurança de APIs, sempre apoiada em Clean Architecture, DDD e SOLID. Vivência em liderança técnica de times de 4 a 12 pessoas, conduzindo decisões arquiteturais, code reviews, definição de boas práticas e mentoria de desenvolvedores.
         </p>
         <p data-i18n="about.p3">
-          Pós-graduado em Arquitetura de Software pela FIAP. Aberto a novos desafios técnicos em diferentes domínios de negócio.
+          Pós-graduado em Arquitetura de Software pela FIAP. Fundador e CTO da LUCSAN, software house de soluções sob demanda e produtos digitais próprios.
         </p>
       </div>
       <div class="about-highlights reveal reveal-delay-2" id="about-highlights"></div>
@@ -771,58 +777,87 @@ const T = {
     nav: { about:'Sobre', experience:'Experiência', skills:'Skills', studies:'Estudos', education:'Formação', contact:'Contato' },
     hero: {
       available: 'Disponível para oportunidades',
-      titles: ['Senior Backend Engineer','Arquiteto de Sistemas Distribuídos','Tech Lead Backend','Especialista Node.js & TypeScript','Engenheiro AWS Serverless'],
-      tagline: 'Arquitetando sistemas de alta disponibilidade há mais de 8 anos. Especialista em Node.js, TypeScript e AWS Serverless.',
+      titles: ['Senior Backend Engineer','Tech Lead Backend','Arquiteto de Sistemas Distribuídos','Especialista Node.js & TypeScript','Founder & CTO'],
+      tagline: 'Construindo e liderando plataformas transacionais de alto volume há mais de 8 anos. Especialista em Node.js, TypeScript, NestJS e AWS.',
       cta1:'Ver Experiência', cta2:'Entre em Contato',
-      s1:'anos de experiência', s2:'empresas', s3:'tecnologias',
+      s1:'anos de experiência', s2:'usuários atendidos', s3:'requisições/dia', s4:'APIs mais rápidas',
     },
     about: {
       tag:'sobre', title:'Sobre Mim',
-      p1:'Engenheiro de Software Sênior com mais de 8 anos de experiência em arquitetura e desenvolvimento de sistemas distribuídos de alta disponibilidade, com forte atuação em plataformas transacionais de alto volume e requisitos críticos de consistência e performance.',
-      p2:'Especialista em Node.js, TypeScript e arquitetura serverless na AWS, com sólida experiência em microsserviços, mensageria, observabilidade e escalabilidade horizontal. Atuação recente em posição de liderança técnica, com vivência em definição arquitetural, mentoria e revisão de código.',
-      p3:'Pós-graduado em Arquitetura de Software pela FIAP. Aberto a novos desafios técnicos em diferentes domínios de negócio.',
+      p1:'Engenheiro de Software Backend Sênior e Tech Lead com mais de 8 anos de experiência construindo e liderando plataformas transacionais de alto volume e alta disponibilidade em Node.js e TypeScript. Atuação recente em sistemas que atendem +2 milhões de usuários e processam ~12 milhões de requisições/dia, com requisitos críticos de consistência, performance e disponibilidade.',
+      p2:'Experiência sólida em arquitetura de microsserviços, comunicação assíncrona (SNS/SQS, Kafka, RabbitMQ), cache distribuído (Redis), observabilidade e segurança de APIs, sempre apoiada em Clean Architecture, DDD e SOLID. Vivência em liderança técnica de times de 4 a 12 pessoas, conduzindo decisões arquiteturais, code reviews, definição de boas práticas e mentoria de desenvolvedores.',
+      p3:'Pós-graduado em Arquitetura de Software pela FIAP. Fundador e CTO da LUCSAN, software house de soluções sob demanda e produtos digitais próprios.',
       highlights: [
-        { icon:'⚡', label:'Alta Performance', desc:'Sistemas transacionais de alto volume' },
-        { icon:'🏗', label:'Arquitetura', desc:'Microsserviços & Serverless' },
-        { icon:'👥', label:'Liderança Técnica', desc:'Mentoria & Code Review' },
-        { icon:'☁️', label:'AWS Expert', desc:'Lambda, ECS, DynamoDB, SQS' },
+        { icon:'⚡', label:'Alta Performance', desc:'Latência de ~20s para ~2s' },
+        { icon:'🏗', label:'Arquitetura', desc:'Microsserviços, DDD & Event-Driven' },
+        { icon:'👥', label:'Liderança Técnica', desc:'Times de 4 a 12 pessoas' },
+        { icon:'☁️', label:'AWS', desc:'Lambda, ECS, EKS, DynamoDB, SQS' },
       ],
     },
     exp: {
       tag:'experiência', title:'Experiência Profissional', remote:'Remoto',
       jobs: [
         {
+          company:'LUCSAN', role:'Founder & CTO',
+          location:'Rio de Janeiro, RJ', remote:true,
+          start:'Mar 2024', end:'Presente',
+          bullets:[
+            'Fundador e líder técnico de software house que desenvolve soluções sob demanda e mantém produtos digitais próprios (apps e SaaS), conduzida em paralelo à atuação como engenheiro.',
+            'Responsável pela estratégia técnica ponta a ponta: arquitetura, definição de stack, padrões de engenharia, qualidade de código e operação em nuvem.',
+            'Desenvolvimento de aplicações em Node.js, TypeScript e NestJS com AWS, CI/CD, observabilidade e boas práticas de arquitetura (DDD e Clean Architecture).',
+          ],
+          tech:['Node.js','TypeScript','NestJS','AWS','CI/CD','DDD','Clean Architecture'],
+        },
+        {
           company:'Afinz', role:'Senior Backend Engineer / Tech Lead',
+          location:'Sorocaba, SP', remote:true,
           start:'Ago 2024', end:'Fev 2026',
           bullets:[
-            'Arquitetura e desenvolvimento de microsserviços e APIs RESTful de missão crítica em Node.js, TypeScript, NestJS e serverless AWS (Lambda, API Gateway, SQS, DynamoDB, ECS, EKS).',
-            'Design de sistemas distribuídos com foco em alta disponibilidade, escalabilidade horizontal e tolerância a falhas, processando volumes transacionais elevados.',
-            'Otimização de performance e custos em ambientes serverless, utilizando Redis para cache distribuído e SQS/EventBridge para comunicação assíncrona.',
-            'Liderança técnica do time backend: code reviews, refinamentos, mentoria e suporte ao crescimento técnico da equipe.',
-            'Colaboração com Produto e Engenharia em decisões estratégicas, traduzindo requisitos de negócio em soluções escaláveis.',
+            'Liderança técnica do time de backend da plataforma de cartão de crédito, que atende +2 milhões de usuários e processa ~12 milhões de requisições/dia, com requisitos críticos de consistência, performance e disponibilidade.',
+            'Reduzi a latência das APIs de cartão de crédito de ~20s para ~2s (aproximadamente 10x mais rápidas), impactando diretamente a experiência de milhões de clientes.',
+            'Conduzi a migração de processadora de cartão aplicando feature flags para alternar o comportamento das APIs em tempo real, sem necessidade de deploys e com risco operacional reduzido durante a transição.',
+            'Liderei a migração incremental de serviços críticos de JavaScript para TypeScript em produção — onboarding de clientes e ciclo de vida do cartão (emissão e gestão) — sem interrupção de serviço.',
+            'Defini padrões de arquitetura (DDD, Clean/Hexagonal Architecture, Event-Driven) e boas práticas adotadas pelo time, conduzindo code reviews, refinamentos e mentoria de desenvolvedores (times de 4 a 12 pessoas).',
+            'Arquitetura e operação em AWS (Lambda, API Gateway, SQS, DynamoDB, ECS, EKS, Secrets Manager, S3) com comunicação assíncrona (SNS/SQS, EventBridge) e cache distribuído (Redis) para escalabilidade horizontal e tolerância a falhas.',
+            'Implementei práticas de segurança de APIs (autenticação, autorização e rate limiting) e observabilidade com logs estruturados, tracing e métricas (OpenTelemetry, Dynatrace, CloudWatch).',
           ],
-          tech:['Node.js','TypeScript','NestJS','AWS Lambda','DynamoDB','SQS','Redis','ECS','EKS','EventBridge'],
+          tech:['Node.js','TypeScript','NestJS','AWS Lambda','DynamoDB','SQS','SNS','Redis','ECS','EKS','EventBridge','OpenTelemetry','Dynatrace'],
         },
         {
-          company:'Fuston Services', role:'Backend Engineer',
-          start:'Mar 2022', end:'Ago 2024',
+          company:'Fuston Services', role:'Backend Developer',
+          location:'São Bernardo do Campo, SP', remote:true,
+          start:'Mar 2022', end:'Jul 2024',
           bullets:[
-            'Desenvolvimento de APIs RESTful em Node.js, TypeScript e arquitetura serverless na AWS para produtos digitais de alta disponibilidade.',
-            'Construção e manutenção de serviços backend escaláveis utilizando Lambda, API Gateway, SQS, S3 e DynamoDB.',
-            'Atuação como engenheiro alocado em projetos de longo prazo, com participação no ciclo completo: design, implementação, deploy e operação.',
-            'Colaboração com times multidisciplinares em squads ágeis para entrega contínua de produtos digitais.',
+            'Backend Engineer alocado no banco digital Afinz, atuando em sistemas de cartões, onboarding, antifraude e integrações financeiras.',
+            'Desenvolvimento de APIs REST escaláveis em Node.js, TypeScript e Serverless Framework em ambiente AWS (Lambda, API Gateway, SQS, S3, DynamoDB).',
+            'Construção de pipelines de CI/CD, padronização de logs, práticas de segurança e criação de lambdas desacopladas.',
+            'Implementação de integrações com processadoras de cartão, provedores externos, mensageria e serviços internos, garantindo confiabilidade nas transações financeiras.',
           ],
-          tech:['Node.js','TypeScript','AWS Lambda','API Gateway','DynamoDB','S3','SQS'],
+          tech:['Node.js','TypeScript','Serverless Framework','AWS Lambda','API Gateway','DynamoDB','S3','SQS'],
         },
         {
-          company:'Easy Delivery', role:'Full Stack Engineer',
-          start:'Jul 2021', end:'Mar 2022',
+          company:'Dasa', role:'Analista de Tecnologia Digital II',
+          location:'São Bernardo do Campo, SP', remote:false,
+          start:'Dez 2022', end:'Dez 2023',
           bullets:[
-            'Análise, manutenção e desenvolvimento de APIs RESTful em Node.js, Express e Sequelize em plataforma de logística de delivery.',
-            'Implementação de melhorias de performance, correções e novas funcionalidades em frontend e backend.',
-            'Integração entre múltiplos serviços e bancos de dados relacionais em ambiente de operações em tempo real.',
+            'Único desenvolvedor backend do time de onboarding da plataforma NAV.',
+            'Desenvolvimento de APIs GraphQL com NestJS e TypeScript para os fluxos de onboarding de clientes.',
+            'Integração com Salesforce para notificações transacionais, garantindo comunicação confiável entre sistemas.',
+            'Testes unitários, pipelines de CI/CD com Jenkins e configuração de deploys em Kubernetes (k8s).',
           ],
-          tech:['Node.js','Express','Sequelize','PostgreSQL','MySQL'],
+          tech:['NestJS','TypeScript','GraphQL','Salesforce','Jenkins','Kubernetes'],
+        },
+        {
+          company:'Olga', role:'Fullstack Developer',
+          location:'São Paulo, SP', remote:false,
+          start:'Dez 2020', end:'Mar 2022',
+          bullets:[
+            'Desenvolvimento e manutenção de APIs REST em Node.js, Express e Sequelize em plataforma de logística de delivery com operações em tempo real.',
+            'Liderança técnica de um time de 4 desenvolvedores, participando do desenho arquitetural e da definição de padrões.',
+            'Desenvolvimento frontend com React e Vue, integrando a interface aos serviços backend.',
+            'Integração entre múltiplos serviços e bancos de dados relacionais (MySQL), com melhorias de performance e novas funcionalidades.',
+          ],
+          tech:['Node.js','Express','Sequelize','MySQL','React','Vue'],
         },
       ],
     },
@@ -831,12 +866,15 @@ const T = {
       groups: [
         { label:'Linguagens', items:['Node.js','TypeScript','JavaScript','SQL'] },
         { label:'Frameworks', items:['NestJS','Express','Serverless Framework'] },
-        { label:'Cloud AWS', items:['Lambda','API Gateway','SQS','S3','DynamoDB','ECS','EKS','CloudWatch','EventBridge'] },
-        { label:'Bancos de Dados', items:['DynamoDB','PostgreSQL','MongoDB','MySQL','Redis'] },
-        { label:'Mensageria', items:['SQS','RabbitMQ','EventBridge'] },
+        { label:'Cloud AWS', items:['Lambda','API Gateway','SNS','SQS','S3','DynamoDB','ECS','EKS','EventBridge'] },
+        { label:'Bancos de Dados', items:['MongoDB','MySQL','PostgreSQL','DynamoDB','Redis'] },
+        { label:'Mensageria', items:['RabbitMQ','SQS','Kafka'] },
+        { label:'Observabilidade', items:['OpenTelemetry','Grafana','Prometheus','Dynatrace','New Relic','CloudWatch'] },
+        { label:'APIs & Segurança', items:['APIs REST','Swagger / OpenAPI','Autenticação','Autorização','Rate Limiting'] },
+        { label:'Arquitetura', items:['Microsserviços','Event-Driven','Serverless','DDD','Clean Architecture'] },
         { label:'DevOps', items:['Docker','Kubernetes','CI/CD','Git'] },
-        { label:'Arquitetura', items:['Microsserviços','Serverless','Event-Driven','DDD','Clean Architecture','RESTful APIs'] },
-        { label:'Práticas', items:['Code Review','Mentoria','Observabilidade','Testes Automatizados','Agile'] },
+        { label:'IA no Desenvolvimento', items:['Prompt Engineering','Cursor','Claude Code'] },
+        { label:'Práticas', items:['Code Review','Mentoria','Testes Automatizados','Metodologias Ágeis'] },
       ],
     },
     studies: {
@@ -856,6 +894,7 @@ const T = {
       items: [
         { type:'Pós-graduação', degree:'Arquitetura de Software', inst:'FIAP', year:'2024' },
         { type:'Bacharelado',   degree:'Sistemas de Informação',  inst:'Universidade Federal de Mato Grosso do Sul (UFMS)', year:'2016 – 2021' },
+        { type:'Técnico',       degree:'Desenvolvimento de Sistemas', inst:'ETEC — SP', year:'2015 – 2016' },
       ],
     },
     contact: {
@@ -875,58 +914,87 @@ const T = {
     nav: { about:'About', experience:'Experience', skills:'Skills', studies:'Studies', education:'Education', contact:'Contact' },
     hero: {
       available:'Available for opportunities',
-      titles:['Senior Backend Engineer','Distributed Systems Architect','Backend Tech Lead','Node.js & TypeScript Expert','AWS Serverless Engineer'],
-      tagline:'Architecting high-availability systems for over 8 years. Specialist in Node.js, TypeScript and AWS Serverless.',
+      titles:['Senior Backend Engineer','Backend Tech Lead','Distributed Systems Architect','Node.js & TypeScript Expert','Founder & CTO'],
+      tagline:'Building and leading high-volume transactional platforms for over 8 years. Specialist in Node.js, TypeScript, NestJS and AWS.',
       cta1:'View Experience', cta2:'Get in Touch',
-      s1:'years of experience', s2:'companies', s3:'technologies',
+      s1:'years of experience', s2:'users served', s3:'requests/day', s4:'faster APIs',
     },
     about: {
       tag:'about', title:'About Me',
-      p1:'Senior Software Engineer with over 8 years of experience in architecting and developing high-availability distributed systems, with strong focus on high-volume transactional platforms and critical consistency and performance requirements.',
-      p2:'Specialist in Node.js, TypeScript, and serverless AWS architecture, with solid experience in microservices, messaging, observability, and horizontal scalability. Recent experience in tech leadership roles with background in architectural definition, mentoring, and code review.',
-      p3:'Postgraduate in Software Architecture from FIAP. Open to new technical challenges across different business domains.',
+      p1:'Senior Backend Software Engineer and Tech Lead with over 8 years of experience building and leading high-volume, high-availability transactional platforms in Node.js and TypeScript. Recent work on systems serving 2M+ users and processing ~12 million requests/day, with critical consistency, performance and availability requirements.',
+      p2:'Solid experience in microservices architecture, asynchronous communication (SNS/SQS, Kafka, RabbitMQ), distributed caching (Redis), observability and API security, grounded in Clean Architecture, DDD and SOLID. Technical leadership of teams of 4 to 12 people, driving architectural decisions, code reviews, engineering best practices and developer mentoring.',
+      p3:'Postgraduate in Software Architecture from FIAP. Founder and CTO of LUCSAN, a software house building custom solutions and its own digital products.',
       highlights:[
-        { icon:'⚡', label:'High Performance', desc:'High-volume transactional systems' },
-        { icon:'🏗', label:'Architecture',     desc:'Microservices & Serverless' },
-        { icon:'👥', label:'Tech Leadership',  desc:'Mentoring & Code Review' },
-        { icon:'☁️', label:'AWS Expert',       desc:'Lambda, ECS, DynamoDB, SQS' },
+        { icon:'⚡', label:'High Performance', desc:'Latency cut from ~20s to ~2s' },
+        { icon:'🏗', label:'Architecture',     desc:'Microservices, DDD & Event-Driven' },
+        { icon:'👥', label:'Tech Leadership',  desc:'Teams of 4 to 12 people' },
+        { icon:'☁️', label:'AWS',              desc:'Lambda, ECS, EKS, DynamoDB, SQS' },
       ],
     },
     exp: {
       tag:'experience', title:'Professional Experience', remote:'Remote',
       jobs: [
         {
+          company:'LUCSAN', role:'Founder & CTO',
+          location:'Rio de Janeiro, RJ', remote:true,
+          start:'Mar 2024', end:'Present',
+          bullets:[
+            'Founder and technical lead of a software house that builds custom solutions and maintains its own digital products (apps and SaaS), run in parallel with my engineering role.',
+            'Responsible for end-to-end technical strategy: architecture, stack definition, engineering standards, code quality and cloud operations.',
+            'Development of applications in Node.js, TypeScript and NestJS on AWS, with CI/CD, observability and architecture best practices (DDD and Clean Architecture).',
+          ],
+          tech:['Node.js','TypeScript','NestJS','AWS','CI/CD','DDD','Clean Architecture'],
+        },
+        {
           company:'Afinz', role:'Senior Backend Engineer / Tech Lead',
+          location:'Sorocaba, SP', remote:true,
           start:'Aug 2024', end:'Feb 2026',
           bullets:[
-            'Architecture and development of mission-critical microservices and RESTful APIs in Node.js, TypeScript, NestJS and serverless AWS (Lambda, API Gateway, SQS, DynamoDB, ECS, EKS).',
-            'Design of distributed systems focused on high availability, horizontal scalability and fault tolerance, processing high transactional volumes.',
-            'Performance and cost optimization in serverless environments, using Redis for distributed cache and SQS/EventBridge for async communication.',
-            'Technical leadership of the backend team: code reviews, refinements, mentoring and supporting technical growth of the team.',
-            'Collaboration with Product and Engineering on strategic decisions, translating business requirements into scalable technical solutions.',
+            'Technical leadership of the backend team for the credit card platform, serving 2M+ users and processing ~12 million requests/day, with critical consistency, performance and availability requirements.',
+            'Reduced credit card API latency from ~20s to ~2s (roughly 10x faster), directly improving the experience of millions of customers.',
+            'Led the card processor migration using feature flags to switch API behavior in real time, with no deploys required and reduced operational risk during the transition.',
+            'Led the incremental migration of critical services from JavaScript to TypeScript in production — customer onboarding and card lifecycle (issuance and management) — with zero downtime.',
+            'Defined architecture standards (DDD, Clean/Hexagonal Architecture, Event-Driven) and best practices adopted by the team, leading code reviews, refinements and developer mentoring (teams of 4 to 12 people).',
+            'Architecture and operation on AWS (Lambda, API Gateway, SQS, DynamoDB, ECS, EKS, Secrets Manager, S3) with async communication (SNS/SQS, EventBridge) and distributed caching (Redis) for horizontal scalability and fault tolerance.',
+            'Implemented API security practices (authentication, authorization and rate limiting) and observability with structured logs, tracing and metrics (OpenTelemetry, Dynatrace, CloudWatch).',
           ],
-          tech:['Node.js','TypeScript','NestJS','AWS Lambda','DynamoDB','SQS','Redis','ECS','EKS','EventBridge'],
+          tech:['Node.js','TypeScript','NestJS','AWS Lambda','DynamoDB','SQS','SNS','Redis','ECS','EKS','EventBridge','OpenTelemetry','Dynatrace'],
         },
         {
-          company:'Fuston Services', role:'Backend Engineer',
-          start:'Mar 2022', end:'Aug 2024',
+          company:'Fuston Services', role:'Backend Developer',
+          location:'São Bernardo do Campo, SP', remote:true,
+          start:'Mar 2022', end:'Jul 2024',
           bullets:[
-            'Development of RESTful APIs in Node.js, TypeScript and serverless AWS architecture for high-availability digital products.',
-            'Construction and maintenance of scalable backend services using Lambda, API Gateway, SQS, S3 and DynamoDB.',
-            'Embedded engineer on long-term projects, participating in the full development cycle: design, implementation, deploy and operations.',
-            'Collaboration with multidisciplinary teams in agile squads for continuous delivery of digital products.',
+            'Backend Engineer allocated to the Afinz digital bank, working on card, onboarding, anti-fraud and financial integration systems.',
+            'Development of scalable REST APIs in Node.js, TypeScript and Serverless Framework on AWS (Lambda, API Gateway, SQS, S3, DynamoDB).',
+            'Built CI/CD pipelines, standardized logging, applied security practices and created decoupled Lambda functions.',
+            'Implemented integrations with card processors, external providers, messaging and internal services, ensuring reliability of financial transactions.',
           ],
-          tech:['Node.js','TypeScript','AWS Lambda','API Gateway','DynamoDB','S3','SQS'],
+          tech:['Node.js','TypeScript','Serverless Framework','AWS Lambda','API Gateway','DynamoDB','S3','SQS'],
         },
         {
-          company:'Easy Delivery', role:'Full Stack Engineer',
-          start:'Jul 2021', end:'Mar 2022',
+          company:'Dasa', role:'Digital Technology Analyst II',
+          location:'São Bernardo do Campo, SP', remote:false,
+          start:'Dec 2022', end:'Dec 2023',
           bullets:[
-            'Analysis, maintenance and development of RESTful APIs in Node.js, Express and Sequelize on a delivery logistics platform.',
-            'Implementation of performance improvements, fixes and new features on frontend and backend.',
-            'Integration across multiple services and relational databases in real-time operations environment.',
+            'Sole backend developer on the onboarding team of the NAV platform.',
+            'Development of GraphQL APIs with NestJS and TypeScript for customer onboarding flows.',
+            'Integration with Salesforce for transactional notifications, ensuring reliable communication between systems.',
+            'Unit tests, CI/CD pipelines with Jenkins and Kubernetes (k8s) deployment configuration.',
           ],
-          tech:['Node.js','Express','Sequelize','PostgreSQL','MySQL'],
+          tech:['NestJS','TypeScript','GraphQL','Salesforce','Jenkins','Kubernetes'],
+        },
+        {
+          company:'Olga', role:'Fullstack Developer',
+          location:'São Paulo, SP', remote:false,
+          start:'Dec 2020', end:'Mar 2022',
+          bullets:[
+            'Development and maintenance of REST APIs in Node.js, Express and Sequelize on a delivery logistics platform with real-time operations.',
+            'Technical leadership of a team of 4 developers, contributing to architectural design and definition of standards.',
+            'Frontend development with React and Vue, integrating the UI with backend services.',
+            'Integration across multiple services and relational databases (MySQL), with performance improvements and new features.',
+          ],
+          tech:['Node.js','Express','Sequelize','MySQL','React','Vue'],
         },
       ],
     },
@@ -935,12 +1003,15 @@ const T = {
       groups: [
         { label:'Languages', items:['Node.js','TypeScript','JavaScript','SQL'] },
         { label:'Frameworks', items:['NestJS','Express','Serverless Framework'] },
-        { label:'Cloud AWS', items:['Lambda','API Gateway','SQS','S3','DynamoDB','ECS','EKS','CloudWatch','EventBridge'] },
-        { label:'Databases', items:['DynamoDB','PostgreSQL','MongoDB','MySQL','Redis'] },
-        { label:'Messaging', items:['SQS','RabbitMQ','EventBridge'] },
+        { label:'Cloud AWS', items:['Lambda','API Gateway','SNS','SQS','S3','DynamoDB','ECS','EKS','EventBridge'] },
+        { label:'Databases', items:['MongoDB','MySQL','PostgreSQL','DynamoDB','Redis'] },
+        { label:'Messaging', items:['RabbitMQ','SQS','Kafka'] },
+        { label:'Observability', items:['OpenTelemetry','Grafana','Prometheus','Dynatrace','New Relic','CloudWatch'] },
+        { label:'APIs & Security', items:['REST APIs','Swagger / OpenAPI','Authentication','Authorization','Rate Limiting'] },
+        { label:'Architecture', items:['Microservices','Event-Driven','Serverless','DDD','Clean Architecture'] },
         { label:'DevOps', items:['Docker','Kubernetes','CI/CD','Git'] },
-        { label:'Architecture', items:['Microservices','Serverless','Event-Driven','DDD','Clean Architecture','RESTful APIs'] },
-        { label:'Practices', items:['Code Review','Mentoring','Observability','Automated Testing','Agile'] },
+        { label:'AI in Development', items:['Prompt Engineering','Cursor','Claude Code'] },
+        { label:'Practices', items:['Code Review','Mentoring','Automated Testing','Agile'] },
       ],
     },
     studies: {
@@ -960,6 +1031,7 @@ const T = {
       items:[
         { type:'Postgraduate', degree:'Software Architecture', inst:'FIAP', year:'2024' },
         { type:'Bachelor',     degree:'Information Systems',   inst:'Federal University of Mato Grosso do Sul (UFMS)', year:'2016 – 2021' },
+        { type:'Technical',    degree:'Systems Development',   inst:'ETEC — SP', year:'2015 – 2016' },
       ],
     },
     contact: {
@@ -979,58 +1051,87 @@ const T = {
     nav: { about:'Sobre mí', experience:'Experiencia', skills:'Skills', studies:'Estudios', education:'Formación', contact:'Contacto' },
     hero: {
       available:'Disponible para oportunidades',
-      titles:['Ingeniero Backend Senior','Arquitecto de Sistemas Distribuidos','Tech Lead Backend','Especialista Node.js & TypeScript','Ingeniero AWS Serverless'],
-      tagline:'Arquitectando sistemas de alta disponibilidad por más de 8 años. Especialista en Node.js, TypeScript y AWS Serverless.',
+      titles:['Ingeniero Backend Senior','Tech Lead Backend','Arquitecto de Sistemas Distribuidos','Especialista Node.js & TypeScript','Founder & CTO'],
+      tagline:'Construyendo y liderando plataformas transaccionales de alto volumen por más de 8 años. Especialista en Node.js, TypeScript, NestJS y AWS.',
       cta1:'Ver Experiencia', cta2:'Ponerse en Contacto',
-      s1:'años de experiencia', s2:'empresas', s3:'tecnologías',
+      s1:'años de experiencia', s2:'usuarios atendidos', s3:'solicitudes/día', s4:'APIs más rápidas',
     },
     about: {
       tag:'sobre mí', title:'Sobre Mí',
-      p1:'Ingeniero de Software Senior con más de 8 años de experiencia en arquitectura y desarrollo de sistemas distribuidos de alta disponibilidad, con fuerte actuación en plataformas transaccionales de alto volumen y requisitos críticos de consistencia y rendimiento.',
-      p2:'Especialista en Node.js, TypeScript y arquitectura serverless en AWS, con sólida experiencia en microservicios, mensajería, observabilidad y escalabilidad horizontal. Reciente experiencia en posición de liderazgo técnico, con vivencia en definición arquitectural, mentoría y revisión de código.',
-      p3:'Postgrado en Arquitectura de Software por FIAP. Abierto a nuevos desafíos técnicos en diferentes dominios de negocio.',
+      p1:'Ingeniero de Software Backend Senior y Tech Lead con más de 8 años de experiencia construyendo y liderando plataformas transaccionales de alto volumen y alta disponibilidad en Node.js y TypeScript. Actuación reciente en sistemas que atienden a más de 2 millones de usuarios y procesan ~12 millones de solicitudes/día, con requisitos críticos de consistencia, rendimiento y disponibilidad.',
+      p2:'Sólida experiencia en arquitectura de microservicios, comunicación asíncrona (SNS/SQS, Kafka, RabbitMQ), caché distribuida (Redis), observabilidad y seguridad de APIs, siempre apoyada en Clean Architecture, DDD y SOLID. Liderazgo técnico de equipos de 4 a 12 personas, conduciendo decisiones arquitectónicas, code reviews, definición de buenas prácticas y mentoría de desarrolladores.',
+      p3:'Postgrado en Arquitectura de Software por FIAP. Fundador y CTO de LUCSAN, software house de soluciones a medida y productos digitales propios.',
       highlights:[
-        { icon:'⚡', label:'Alto Rendimiento', desc:'Sistemas transaccionales de alto volumen' },
-        { icon:'🏗', label:'Arquitectura',     desc:'Microservicios & Serverless' },
-        { icon:'👥', label:'Liderazgo Técnico',desc:'Mentoría & Code Review' },
-        { icon:'☁️', label:'AWS Expert',       desc:'Lambda, ECS, DynamoDB, SQS' },
+        { icon:'⚡', label:'Alto Rendimiento', desc:'Latencia de ~20s a ~2s' },
+        { icon:'🏗', label:'Arquitectura',     desc:'Microservicios, DDD & Event-Driven' },
+        { icon:'👥', label:'Liderazgo Técnico',desc:'Equipos de 4 a 12 personas' },
+        { icon:'☁️', label:'AWS',              desc:'Lambda, ECS, EKS, DynamoDB, SQS' },
       ],
     },
     exp: {
       tag:'experiencia', title:'Experiencia Profesional', remote:'Remoto',
       jobs:[
         {
+          company:'LUCSAN', role:'Founder & CTO',
+          location:'Rio de Janeiro, RJ', remote:true,
+          start:'Mar 2024', end:'Presente',
+          bullets:[
+            'Fundador y líder técnico de una software house que desarrolla soluciones a medida y mantiene productos digitales propios (apps y SaaS), en paralelo a mi actuación como ingeniero.',
+            'Responsable de la estrategia técnica de punta a punta: arquitectura, definición de stack, estándares de ingeniería, calidad de código y operación en la nube.',
+            'Desarrollo de aplicaciones en Node.js, TypeScript y NestJS con AWS, CI/CD, observabilidad y buenas prácticas de arquitectura (DDD y Clean Architecture).',
+          ],
+          tech:['Node.js','TypeScript','NestJS','AWS','CI/CD','DDD','Clean Architecture'],
+        },
+        {
           company:'Afinz', role:'Senior Backend Engineer / Tech Lead',
+          location:'Sorocaba, SP', remote:true,
           start:'Ago 2024', end:'Feb 2026',
           bullets:[
-            'Arquitectura y desarrollo de microservicios y APIs RESTful de misión crítica en Node.js, TypeScript, NestJS y serverless AWS (Lambda, API Gateway, SQS, DynamoDB, ECS, EKS).',
-            'Diseño de sistemas distribuidos enfocados en alta disponibilidad, escalabilidad horizontal y tolerancia a fallos.',
-            'Optimización de rendimiento y costos en entornos serverless, usando Redis para caché distribuida y SQS/EventBridge para comunicación asíncrona.',
-            'Liderazgo técnico del equipo backend: revisiones de código, refinamientos, mentoría y apoyo al crecimiento técnico.',
-            'Colaboración con Producto e Ingeniería en decisiones estratégicas, traduciendo requisitos de negocio en soluciones escalables.',
+            'Liderazgo técnico del equipo backend de la plataforma de tarjetas de crédito, que atiende a más de 2 millones de usuarios y procesa ~12 millones de solicitudes/día, con requisitos críticos de consistencia, rendimiento y disponibilidad.',
+            'Reduje la latencia de las APIs de tarjeta de crédito de ~20s a ~2s (aproximadamente 10x más rápidas), impactando directamente la experiencia de millones de clientes.',
+            'Conduje la migración de procesadora de tarjetas aplicando feature flags para alternar el comportamiento de las APIs en tiempo real, sin necesidad de deploys y con menor riesgo operacional durante la transición.',
+            'Lideré la migración incremental de servicios críticos de JavaScript a TypeScript en producción — onboarding de clientes y ciclo de vida de la tarjeta (emisión y gestión) — sin interrupción del servicio.',
+            'Definí estándares de arquitectura (DDD, Clean/Hexagonal Architecture, Event-Driven) y buenas prácticas adoptadas por el equipo, conduciendo code reviews, refinamientos y mentoría de desarrolladores (equipos de 4 a 12 personas).',
+            'Arquitectura y operación en AWS (Lambda, API Gateway, SQS, DynamoDB, ECS, EKS, Secrets Manager, S3) con comunicación asíncrona (SNS/SQS, EventBridge) y caché distribuida (Redis) para escalabilidad horizontal y tolerancia a fallos.',
+            'Implementé prácticas de seguridad de APIs (autenticación, autorización y rate limiting) y observabilidad con logs estructurados, tracing y métricas (OpenTelemetry, Dynatrace, CloudWatch).',
           ],
-          tech:['Node.js','TypeScript','NestJS','AWS Lambda','DynamoDB','SQS','Redis','ECS','EKS','EventBridge'],
+          tech:['Node.js','TypeScript','NestJS','AWS Lambda','DynamoDB','SQS','SNS','Redis','ECS','EKS','EventBridge','OpenTelemetry','Dynatrace'],
         },
         {
-          company:'Fuston Services', role:'Backend Engineer',
-          start:'Mar 2022', end:'Ago 2024',
+          company:'Fuston Services', role:'Backend Developer',
+          location:'São Bernardo do Campo, SP', remote:true,
+          start:'Mar 2022', end:'Jul 2024',
           bullets:[
-            'Desarrollo de APIs RESTful en Node.js, TypeScript y arquitectura serverless en AWS para productos digitales de alta disponibilidad.',
-            'Construcción y mantenimiento de servicios backend escalables usando Lambda, API Gateway, SQS, S3 y DynamoDB.',
-            'Ingeniero asignado en proyectos de largo plazo, participando en el ciclo completo: diseño, implementación, deploy y operación.',
-            'Colaboración con equipos multidisciplinarios en squads ágiles para entrega continua de productos digitales.',
+            'Backend Engineer asignado al banco digital Afinz, trabajando en sistemas de tarjetas, onboarding, antifraude e integraciones financieras.',
+            'Desarrollo de APIs REST escalables en Node.js, TypeScript y Serverless Framework en AWS (Lambda, API Gateway, SQS, S3, DynamoDB).',
+            'Construcción de pipelines de CI/CD, estandarización de logs, prácticas de seguridad y creación de lambdas desacopladas.',
+            'Implementación de integraciones con procesadoras de tarjetas, proveedores externos, mensajería y servicios internos, garantizando la confiabilidad de las transacciones financieras.',
           ],
-          tech:['Node.js','TypeScript','AWS Lambda','API Gateway','DynamoDB','S3','SQS'],
+          tech:['Node.js','TypeScript','Serverless Framework','AWS Lambda','API Gateway','DynamoDB','S3','SQS'],
         },
         {
-          company:'Easy Delivery', role:'Full Stack Engineer',
-          start:'Jul 2021', end:'Mar 2022',
+          company:'Dasa', role:'Analista de Tecnología Digital II',
+          location:'São Bernardo do Campo, SP', remote:false,
+          start:'Dic 2022', end:'Dic 2023',
           bullets:[
-            'Análisis, mantenimiento y desarrollo de APIs RESTful en Node.js, Express y Sequelize en plataforma de logística de delivery.',
-            'Implementación de mejoras de rendimiento, correcciones y nuevas funcionalidades en frontend y backend.',
-            'Integración entre múltiples servicios y bases de datos relacionales en entorno de operaciones en tiempo real.',
+            'Único desarrollador backend del equipo de onboarding de la plataforma NAV.',
+            'Desarrollo de APIs GraphQL con NestJS y TypeScript para los flujos de onboarding de clientes.',
+            'Integración con Salesforce para notificaciones transaccionales, garantizando una comunicación confiable entre sistemas.',
+            'Pruebas unitarias, pipelines de CI/CD con Jenkins y configuración de deploys en Kubernetes (k8s).',
           ],
-          tech:['Node.js','Express','Sequelize','PostgreSQL','MySQL'],
+          tech:['NestJS','TypeScript','GraphQL','Salesforce','Jenkins','Kubernetes'],
+        },
+        {
+          company:'Olga', role:'Fullstack Developer',
+          location:'São Paulo, SP', remote:false,
+          start:'Dic 2020', end:'Mar 2022',
+          bullets:[
+            'Desarrollo y mantenimiento de APIs REST en Node.js, Express y Sequelize en una plataforma de logística de delivery con operaciones en tiempo real.',
+            'Liderazgo técnico de un equipo de 4 desarrolladores, participando en el diseño arquitectónico y la definición de estándares.',
+            'Desarrollo frontend con React y Vue, integrando la interfaz con los servicios backend.',
+            'Integración entre múltiples servicios y bases de datos relacionales (MySQL), con mejoras de rendimiento y nuevas funcionalidades.',
+          ],
+          tech:['Node.js','Express','Sequelize','MySQL','React','Vue'],
         },
       ],
     },
@@ -1039,12 +1140,15 @@ const T = {
       groups:[
         { label:'Lenguajes', items:['Node.js','TypeScript','JavaScript','SQL'] },
         { label:'Frameworks', items:['NestJS','Express','Serverless Framework'] },
-        { label:'Cloud AWS', items:['Lambda','API Gateway','SQS','S3','DynamoDB','ECS','EKS','CloudWatch','EventBridge'] },
-        { label:'Bases de Datos', items:['DynamoDB','PostgreSQL','MongoDB','MySQL','Redis'] },
-        { label:'Mensajería', items:['SQS','RabbitMQ','EventBridge'] },
+        { label:'Cloud AWS', items:['Lambda','API Gateway','SNS','SQS','S3','DynamoDB','ECS','EKS','EventBridge'] },
+        { label:'Bases de Datos', items:['MongoDB','MySQL','PostgreSQL','DynamoDB','Redis'] },
+        { label:'Mensajería', items:['RabbitMQ','SQS','Kafka'] },
+        { label:'Observabilidad', items:['OpenTelemetry','Grafana','Prometheus','Dynatrace','New Relic','CloudWatch'] },
+        { label:'APIs & Seguridad', items:['APIs REST','Swagger / OpenAPI','Autenticación','Autorización','Rate Limiting'] },
+        { label:'Arquitectura', items:['Microservicios','Event-Driven','Serverless','DDD','Clean Architecture'] },
         { label:'DevOps', items:['Docker','Kubernetes','CI/CD','Git'] },
-        { label:'Arquitectura', items:['Microservicios','Serverless','Event-Driven','DDD','Clean Architecture','RESTful APIs'] },
-        { label:'Prácticas', items:['Code Review','Mentoría','Observabilidad','Pruebas Automatizadas','Agile'] },
+        { label:'IA en el Desarrollo', items:['Prompt Engineering','Cursor','Claude Code'] },
+        { label:'Prácticas', items:['Code Review','Mentoría','Pruebas Automatizadas','Metodologías Ágiles'] },
       ],
     },
     studies: {
@@ -1064,6 +1168,7 @@ const T = {
       items:[
         { type:'Postgrado', degree:'Arquitectura de Software', inst:'FIAP', year:'2024' },
         { type:'Licenciatura', degree:'Sistemas de Información', inst:'Universidad Federal de Mato Grosso do Sul (UFMS)', year:'2016 – 2021' },
+        { type:'Técnico', degree:'Desarrollo de Sistemas', inst:'ETEC — SP', year:'2015 – 2016' },
       ],
     },
     contact: {
@@ -1211,7 +1316,7 @@ function renderTimeline() {
         <div>
           <div class="tl-company">${j.company}</div>
           <div class="tl-role">${j.role}</div>
-          <div class="tl-location">${remote}</div>
+          <div class="tl-location">${j.location}${j.remote ? ' · '+remote : ''}</div>
         </div>
         <span class="tl-period">${j.start} — ${j.end}</span>
       </div>
